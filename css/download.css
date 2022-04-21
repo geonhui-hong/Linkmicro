@@ -1,0 +1,11 @@
+.download_list > li,.python_version.download_operation li{padding:0.8rem 2rem;}
+.download_list > li.active,
+.python_version.download_operation li.active{background:#464555;color:#fff;border-radius: 30px;}
+.download_operation .os_list li{
+    padding:2rem;
+    opacity: 0.3;
+}
+.python_version > ul{max-width:80rem;margin:0 auto;margin-top:4rem;display:flex;
+    justify-content: space-around;align-items:center;font-size:1.6rem;
+  }
+.download_operation .os_list li.active{opacity: 1;}
