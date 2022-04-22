@@ -19,9 +19,11 @@
                     <a href="index.html"><img src="images/logo.svg" alt=""></a>
                 </div>
                 <ul class="navbar__menu">
-                    <li class="navbar__menu__item ">Features</li>
+                    <li class="navbar__menu__item">
+                        <a href="index.html">Features</a>
+                    </li>
                     <li class="navbar__menu__item active">
-                        <a href="download.html" target="_blank">Download</a>
+                        <a href="download.html" >Download</a>
                     </li>
                     <!-- <li class="navbar__menu__item" >Pricing</li> -->
                     <li class="navbar__menu__item" >
@@ -31,7 +33,7 @@
                         <span></span>
                         <li class="navbar__menu__item" >EN</li>
                     </div>
-                    <button class="get_button">Started for free</button>
+                    <button class="get_button">Get started for Free</button>
                   
                 </div>
                     
@@ -41,57 +43,81 @@
                 </a>
             </div>
     </nav>
-    <section class="download_2">
-        <div class="download_support_container ">
-            <div class="title">We support various installation environments.</div>
-            <div class="wrap" >
-                <div class="download_type">
-                    <div class="title">Operation system</div>
-                        <ul class="download_list">
-                            <li class="active">Desktop Application
-                            </li>
-                            <li>Python Package (.whl)
-                            </li>
-                        </ul>
+    <section class="download_container">
+        <div class="wrap">
+            <div class="title">Select your installation enviroments.</div>
+            <div class="download_list_container" >
+                <div class="download_list_wrap">
+                    <div class="title">Product Type</div>
+                    <form class="download_list_radio">
+                        <div class="download_list_radio_li">
+                            <input type="radio" id="html" name="fav_language" value="HTML">
+                            <label for="html">Desktop</label>
+                        </div>
+                        <div class="download_list_radio_li">
+                            <input type="radio" id="css" name="fav_language" value="CSS">
+                            <label for="css">Python Package (.whl)</label>
+                        </div>
+                        </form> 
                 </div>
-                <div class="operation_system download_operation">
+                <div class="download_list_wrap">
                         <div class="title">Operation system</div>
                         <ul class="os_list">
-                            <li class="active">
-                                <img src="images/os1.svg" alt="">
-                                <div>Window</div>
+                            <li>
+                               <label for="window"> <img src="images/os1.svg" alt=""></label>
+                                <div class="download_list_radio_li">
+                                 <input type="radio" id="window" name="os" value="window">
+                                <label for="window">Desktop</label>
+                                </div>
                             </li>
                             <li>
-                                <img src="images/os2.svg" alt="">
-                                <div><span class="mo_no">Mac OS</span><span class="intel">intel</span><div>
+                                <label for="intel"><img src="images/os2.svg" alt=""></label>
+                                <div class="download_list_radio_li">
+                                    <input type="radio" id="intel" name="os" value="apple_intel">
+                                    <label for="intel"><span class="mo_no">Mac OS</span><span class="intel">intel</span></label>
+                                </div>
                             </li>
                             <li>
-                                <img src="images/os2.svg" alt="">
-                                <div><span class="mo_no">Mac OS</span><span class="apple_silicon">apple_silicon</span><div>
+                                <label for="apple_silicon"><img src="images/os2.svg" alt=""></label>
+                                <div class="download_list_radio_li">
+                                    <input type="radio" id="apple_silicon" name="os" value="apple_silicon">
+                                    <label for="apple_silicon"><span class="mo_no">Mac OS</span><span class="apple_silicon">apple silicon</span></label>
+                                </div>
                             </li>
                             <li>
-                                <img src="images/os3.svg" alt="">
-                                <div>Linux</div>
+                                <label for="linux"><img src="images/os3.svg" alt=""></label>
+                                <div class="download_list_radio_li">
+                                <input type="radio" id="linux" name="os" value="linux">
+                                <label for="linux">linux</label>
+                                </div>
                             </li>
                         </ul>
                 </div>
-                <div class="python_version download_operation">
+                <div class="download_list_wrap">
                         <div class="title">Python version</div>
-                        <ul>
-                            <li class="active">3.6</li>
-                            <span></span>
-                            <li>3.7</li>
-                            <span></span>
-                            <li>3.8</li>
-                            <span></span>
-                            <li>3.9</li>
+                        <ul class="download_list_radio">
+                            <div class="download_list_radio_li">
+                                <input type="radio" id="3.6" name="version" value="3.6">
+                                <label for="3.6">3.6</label>
+                            </div>
+                            <div class="download_list_radio_li">
+                                <input type="radio" id="3.7" name="version" value="3.7">
+                                <label for="3.7">3.7</label>
+                            </div>
+                            <div class="download_list_radio_li">
+                                <input type="radio" id="3.8" name="version" value="3.8">
+                                <label for="3.8">3.8</label>
+                            </div>
+                            <div class="download_list_radio_li">
+                                <input type="radio" id="3.9" name="version" value="3.9">
+                                <label for="3.9">3.9</label>
+                            </div>
                         </ul>
                 </div>
             </div>
             <div class="download_button_container">
-                <button onclick="window.location.href='#'" class="download">Download</button>
+                <button onclick="window.location.href='index.html'" class="okay_button">Download</button>
             </div>
-        </div>
         </div>
     </section>
 </body>

@@ -53,6 +53,7 @@ const close = document.getElementsByClassName("close");
 
 toggleBtn.addEventListener('click',() =>{
   menu.classList.toggle('active');
+  document.body.classList.toggle('hambuger_overflow')
   toggleBtn.classList.toggle('open'); 
 });
 

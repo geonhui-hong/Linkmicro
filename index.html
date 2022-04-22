@@ -10,7 +10,6 @@
     <meta name="apple-mobile-web-app-title" content="">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
     <link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <script src="https://kit.fontawesome.com/7e24956d25.js" crossorigin="anonymous"></script>
@@ -27,22 +26,22 @@
                     <a href="index.html"><img src="images/logo.svg" alt=""></a>
                 </div>
                 <ul class="navbar__menu">
-                    <li class="navbar__menu__item active">Features</li>
+                    <li class="navbar__menu__item active">
+                        <a href="index.html">Features</a>
+                    </li>
                     <li class="navbar__menu__item">
-                        <a href="download.html" target="_blank">Download</a>
+                        <a href="download.html">Download</a>
                     </li>
                     <!-- <li class="navbar__menu__item" >Pricing</li> -->
                     <li class="navbar__menu__item" >
                         <a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a></li>
-                    <div class="language">
-                        <!-- <li class="navbar__menu__item" >KO</li> -->
+                    <!-- <div class="language">
+                        <li class="navbar__menu__item" >KO</li>
                         <span></span>
                         <li class="navbar__menu__item" >EN</li>
-                    </div>
-                    <button class="get_button">Started for free</button>
-                  
-                </div>
-                    
+                    </div> -->
+                    <button onclick="window.location.href='start.html'" class="get_button">Get started for Free</button>
+                </div>  
                 </ul>
                 <a href="javascript:click()" class="navbar__toggle">
                     <span>메뉴</span>
@@ -56,7 +55,7 @@
                     <h2 class="main_title">A better experience for<br>Data scientists</h2>
                     <p class="main_text">We noticed a few limitations of JupyterLab, and focused on several conventions that data scientists are using to work around the limitation.</p>
                     <div class="button_container">
-                        <button class="get_button">Started for free</button>
+                        <button onclick="window.location.href='start.html'" class="get_button">Get started for Free</button>
                         <button onClick="window.open('https://www.youtube.com/watch?v=gEug1Bv3fLE')" class="youtube_button">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_201_338)">
@@ -70,18 +69,12 @@
                                 </svg>
                                 
                             See How It Works</button>
-                    </div>
+                    </div> 
                     <div class="run_on">
-                        <div class="title">Run on</div>
+                        <div class="title">Runs on</div>
                         <ul class="icon_flex_div">
                             <li>
-                                <img src="images/os1.svg" alt="">
-                            </li>
-                            <li>
-                                <img src="images/os2.svg" alt="">
-                            </li>
-                            <li>
-                                <img src="images/os3.svg" alt="">
+                                <img src="images/runon.svg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -103,26 +96,6 @@
     </div>
     </div>
     </section>
-    <!-- <section class="pipeline_concept_p">
-        <div class="pipeline_concept">
-            <div class="concept_title">Concept</div>
-            <img data-aos="fade-up"  data-aos-easing="ease-out-cubic"
-            data-aos-duration="1000" src="images/pipeline_concept.png" alt="">
-            <p data-aos="fade-up"  data-aos-easing="ease-out-cubic"
-            data-aos-duration="1000">Link is a platform that enables easy and
-                quick optimal model development
-                while maintaining the usability of Jupyter,
-                a development environment
-                that data scientists are familiar with.</p>
-        </div>
-    </section> -->
-    <!-- <section>
-        <div class="link_opener">
-            <div class="link_info_video1">
-                <video src="images/link_opener.mp4" autoplay loop muted playsinline></video>
-            </div>
-        </div>
-    </section> -->
     <section  data-aos="fade-up"  data-aos-easing="ease-out-cubic"
     data-aos-duration="500"> 
         <div class="partner">
@@ -145,62 +118,7 @@
         </div>
         </div>
     </section>
-    <!-- <section class="swiper_div">
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="feature_container feature_01">
-                    <div class="wrap">
-                <div class="feature_text">
-                    <div class="feature_title" id="features-title1">
-                        Pipeline creation
-                    </div>
-                    <div class="feature_desc" id="features-desc1">
-                        In Link, you can specify the relationship between cells as well as the execution sequence. You can create a pipeline on the same screen as the code to improve readability. 
-                    </div>
-                </div>
-                <div class="link_info_video1">
-                    <video src="images/video1.mp4" autoplay loop muted playsinline></video>
-                </div>
-                </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="feature_container feature_02">
-                    <div class="wrap">
-                <div class="feature_text">
-                    <div class="feature_title" id="features-title2">Caching management</div>
-                    <div class="feature_desc" id="features-desc2">
-                        Link manages the result values of the cells that have already been executed separately from those that haven't. It also prevents work duplication and work-efficiency loss through caching. 
-                    </div>
-                </div>
-                <div class="link_info_video1">
-                    <video src="images/video2.mp4" autoplay loop muted playsinline></video>
-                </div>
-                </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="feature_container feature_02">
-                    <div class="wrap">
-                <div class="feature_text">
-                    <div class="feature_title" id="features-title2">Easily collaboration</div>
-                    <div class="feature_desc" id="features-desc2">
-                        You can save and share your outputs that are pipelines, components, caches, python codes. You can collaborate more comfortable  with Link
-                    </div>
-                </div>
-                <div class="link_info_video1">
-                    <video src="images/video2.mp4" autoplay loop muted playsinline></video>
-                </div>
-                </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-          </div>
-    </section> -->
+
     <div class="section-tabs"  data-aos="fade-up"  data-aos-easing="ease-out-cubic"
     data-aos-duration="500">
         <!-- Swiper Tab -->
@@ -281,38 +199,15 @@
         </div>
 
       </div>
-    <!-- <section class="support_container_p"  >
-        <div class="support_container card_style" data-aos="fade-up"  data-aos-easing="ease-out-cubic"
-        data-aos-duration="500">
-            <div class="title" >We support various installation environments.</div>
-            <div class="Run_on">
-                <div class="title">Run on</div>
-                <ul class="os_list run_on_list">
-                    <li>
-                        <img src="images/os1.svg" alt="">
-                    </li>
-                    <li>
-                        <img src="images/os2.svg" alt="">
-                    </li>
-                    <li>
-                        <img src="images/os3.svg" alt="">
-                    </li>
-                </ul>
-            </div>
-            <div class="download_container">
-            <a href="download.html" target="_blank" class="download">Download</a>
-        </div>
-        </div>
-    </section> -->
-    <section class="logo_ani" >
+    <!-- <section class="logo_ani" >
         <div class="logo_title" >Improve the Working Paradigm of Data Modeling with Link</div>
         <div class="logo_ani_video">
             <video src="images/logo_video.mp4" autoplay loop muted playsinline></video>
         </div>
-    </section>
+    </section> -->
     <section class="banner">
        <div>Experience Link™ to understand the general flow of codes and develop an optimal model.</div>
-       <button>Started for free</button>
+       <button class="get_button">Get started for Free</button>
     </section>
         <!-- contact -->
         <footer id="contact">
@@ -354,7 +249,6 @@
             </div>
             <div class="copyright">Copyright© MakinaRocks 2022. All Rights Reserved.</div>
         </footer>
-
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         AOS.init();
