@@ -67,7 +67,8 @@
   .input_div{display: flex;gap:2rem;align-items: center;font-size:1.6rem;}
 .input_div input{height:3rem;width:100%;border: 1px solid #e0e0e0;padding-left:8px}
 .okay_button{background: #6C79F9;padding:1.2rem 2rem;color:#fff;font-weight:700;
-  border:none;border-radius: 30px;font-size:1.4rem;width: 24rem}
+  border:none;border-radius: 30px;font-size:1.4rem;width: 24rem; opacity: 0.4;
+}
 .okay_button:hover{background: #95A0FF;}
 .border_button{border:1px solid #6C79F9;background: #fff;color:#6C79F9;
   padding:1.2rem 2rem;font-weight: 700;border-radius: 30px;width:24rem;}
@@ -135,7 +136,7 @@ input:invalid{
 .checkbox_container{display: flex;font-size:1.2rem;opacity:0.6;}
 .organaization_container{display: flex;flex-direction: column;gap:0.4rem;}
 .input_title{font-size:1.4rem;font-weight: 700;}
-.invalid_text{font-size:1.2rem;color:red;}
+.invalid_text{font-size:1.2rem;color:red;visibility: hidden;}
 .organaization_example{font-size:1.2rem;opacity: 0.6;margin-left:0.4rem;font-weight: 400;;}
 .button_container{display: flex;justify-content: center;width:100%;}
 .start_check_container{display: flex;gap:0.4rem;font-size:1.4rem;font-weight:400;}

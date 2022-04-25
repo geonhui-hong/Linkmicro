@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-        <link rel="stylesheet" href="css/style1.css">
-        <link rel="stylesheet" href="css/download.css">
-        <script src="js/main.js" defer></script>
-        <script src="js/download.js"></script>
-        <title>Download</title>
-    </head>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link rel="stylesheet" href="css/style1.css">
+	<link rel="stylesheet" href="css/download.css">
+	<script src="js/main.js" defer></script>
+	<script src="js/download.js"></script>
+	<title>Download</title>
+</head>
+
 <body>
-    <!-- navbar -->
-    <nav id="navbar">
-        <div class="navbar_container">
-            <div class="wrap">
-                <div class="navbar__logo">
-                    <a href="index.html"><img src="images/logo.svg" alt=""></a>
-                </div>
-                <ul class="navbar__menu">
-                    <li class="navbar__menu__item active">Features</li>
-                    <li class="navbar__menu__item">
-                        <a href="download.html">Download</a>
-                    </li>
-                    <!-- <li class="navbar__menu__item" >Pricing</li> -->
-                    <li class="navbar__menu__item" >
-                        <a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a></li>
-                    <!-- <div class="language">
-                        <li class="navbar__menu__item" >KO</li>
-                        <span></span>
-                        <li class="navbar__menu__item" >EN</li>
-                    </div> -->
-                    <button onclick="window.location.href='start.html'" class="get_button">Get started for Free</button>
-                </div>  
-                </ul>
-                <a href="javascript:click()" class="navbar__toggle">
-                    <span>메뉴</span>
-                </a>
-            </div>
-    </nav>
-    <section class="forgot_container">
-        <div class="start_input_container">
-            <div class="start_input">
-                <div class="password">
-                    <img src="images/password.svg" alt="">
-                </div>
-                <div class="text_container">
-                    <div class="title">Forgot Product Key</div>
-                    <div class="sub_title">Enter the email that you entered for using link.<br>We’ll send your prdocut key.</div>
-                </div>
-                <div class="input_container">
-                    <div class="email_container">
-                            <div class="input_title">Email *</div>
-                            <input type="text" id="fname" name="fname">
-                            <div class="invalid_text">Email address is invalid</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="button_container">
-            <button onclick="window.location.href='forgot1.html'" class="okay_button">Send email</button>
-        </div>
-    </section>
-    <script src="js/main.js" defer></script>
+	<!-- navbar -->
+	<nav id="navbar">
+		<div class="navbar_container">
+			<div class="wrap">
+				<div class="navbar__logo" data-target="index">
+					<a href="index.html"><img src="images/logo.svg" alt=""></a>
+				</div>
+				<ul class="navbar__menu">
+					<li class="navbar__menu__item active" data-target="index">
+						<a href="index.html">Features</a>
+					</li>
+					<li class="navbar__menu__item" data-target="download">
+						<a href="download.html">Download</a>
+					</li>
+					<li class="navbar__menu__item" data-target="documentation">
+						<a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a>
+					</li>
+					<button class="get_button" data-target-html="start">Get started for Free</button>
+				</ul>
+				<a class="navbar__toggle">
+					<span>메뉴</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+	<section class="forgot_container">
+		<div class="start_input_container">
+			<div class="start_input">
+				<div class="password">
+					<img src="images/password.svg" alt="">
+				</div>
+				<div class="text_container">
+					<div class="title">Forgot Product Key</div>
+					<div class="sub_title">Enter the email that you entered for using link.<br>We’ll send your prdocut key.</div>
+				</div>
+				<div class="input_container">
+					<div class="email_container">
+						<div class="input_title">Email *</div>
+						<input type="text" id="fname" name="fname">
+						<div class="invalid_text">Email address is invalid</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="button_container">
+			<button onclick="window.location.href='forgot1.html'" class="okay_button">Send email</button>
+		</div>
+	</section>
+	<script src="js/navbar.js" defer></script>
 </body>
+
 </html>

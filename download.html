@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-    <link rel="stylesheet" href="css/style1.css">
-    <link rel="stylesheet" href="css/download.css">
-    <title>Download</title>
-</head>
-<body>
-    <nav id="navbar">
-        <div class="navbar_container">
-            <div class="wrap">
-                <div class="navbar__logo">
-                    <a href="index.html"><img src="images/logo.svg" alt=""></a>
-                </div>
-                <ul class="navbar__menu">
-                    <li class="navbar__menu__item">
-                        <a href="index.html">Features</a>
-                    </li>
-                    <li class="navbar__menu__item active">
-                        <a href="download.html">Download</a>
-                    </li>
-                    <!-- <li class="navbar__menu__item" >Pricing</li> -->
-                    <li class="navbar__menu__item" >
-                        <a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a></li>
-                    <button class="get_button">Get started for Free</button>
-                  
-                </div>
-                    
-                </ul>
-                <a href="javascript:click()" class="navbar__toggle">
-                    <span>메뉴</span>
-                </a>
-            </div>
-    </nav>
-    <section class="download_page" >
-        <div class="link_character">
-            <img src="images/link_character.svg" alt="">
-        </div>
-        <div class="login">
-            <div class="text_container">
-                <div class="title">Download Link!</div>
-                <div class="sub_title">We support various OS such as Window, Apple , Linux</div>
-            </div>
-            <div class="input_container">
-                <div class="email_container">
-                    <div class="input_title">Email</div>
-                    <input type="text" id="fname" name="fname">
-                    <div class="invalid_text">{emai} is invalid</div>
-                </div>
-                <div class="email_container">
-                    <div class="input_title">Product key</div>
-                    <input type="text" id="fname" name="fname">
-                    <div class="invalid_text">{product key} is invalid</div>
-                </div>
-                <div class="forgot_div"><a href="forgot.html">Forgot product key</a></div>
-                <div class="download_button_container">
-                    <button onclick="window.location.href='download_1.html'" class="okay_button">Download</button>
-                </div>
-            </div>
-            <div class="please_desc">Please touch <a href="start.html">'Get Started for Free'</a>if you need product key</div>
-        </div>
-    </section>
 
-    <script src="js/scroll.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link rel="stylesheet" href="css/style1.css">
+	<link rel="stylesheet" href="css/download.css">
+	<title>Download</title>
+</head>
+
+<body>
+	<nav id="navbar">
+		<div class="navbar_container">
+			<div class="wrap">
+				<div class="navbar__logo" data-target="index">
+					<a href="index.html"><img src="images/logo.svg" alt=""></a>
+				</div>
+				<ul class="navbar__menu">
+					<li class="navbar__menu__item active" data-target="index">
+						<a href="index.html">Features</a>
+					</li>
+					<li class="navbar__menu__item" data-target="download">
+						<a href="download.html">Download</a>
+					</li>
+					<li class="navbar__menu__item" data-target="documentation">
+						<a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a>
+					</li>
+					<button class="get_button" data-target-html="start">Get started for Free</button>
+				</ul>
+				<a class="navbar__toggle">
+					<span>메뉴</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+	<section class="download_page">
+		<div class="link_character">
+			<img src="images/link_character.svg" alt="">
+		</div>
+		<div class="login">
+			<form id="download_form">
+				<div class="text_container">
+					<div class="title">Download Link!</div>
+					<div class="sub_title">We support various OS such as Window, Apple , Linux</div>
+				</div>
+				<div class="input_container">
+					<div class="email_container">
+						<div class="input_title">Email</div>
+						<input type="text" id="email" name="email">
+						<div class="invalid_text" id="email_error_field">{emai} is invalid</div>
+					</div>
+					<div class="email_container">
+						<div class="input_title">Product key</div>
+						<input type="text" id="product_key" name="product_key">
+						<div class="invalid_text" id="product_key_error_field">{product key} is invalid</div>
+					</div>
+					<div class="forgot_div"><a href="forgot.html">Forgot product key</a></div>
+					<div class="download_button_container">
+						<!-- onclick="window.location.href='download_1.html'"  -->
+						<button class="okay_button" id="submit">Download</button>
+					</div>
+				</div>
+				<div class="please_desc">Please touch <a href="start.html">'Get Started for Free'</a>if you need product key
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<script src="js/scroll.js" defer></script>
+	<script src="js/navbar.js" defer></script>
+	<script src="js/download.js" defer></script>
 </body>
+
 </html>
