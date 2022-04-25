@@ -1,10 +1,3 @@
-/**
- * navbar active
- */
-const urlString = window.location.href;
-console.log(urlString.includes('download.html'))
-
-
 const navbar = document.querySelector('#navbar');
 const home = document.querySelector('#home');
 
@@ -32,28 +25,29 @@ const navbarMenu = document.querySelector('.navbar__menu');
 const navbarMenuItem = Array.from(navbarMenu.querySelectorAll('li'));
 navbarMenu.addEventListener('click', (event) => {
 	const target = event.target;
-	const link = target.dataset.link;
-	navbarMenuItem.forEach((item) => item.classList.remove('active'));
-	target.classList.add('active');
-	console.log(target);
-	console.log(target.dataset.target)
+
+	// navbarMenuItem.forEach((item) => item.classList.remove('active'));
+	// target.classList.add('active');
+
 	if (target.dataset.target) {
 		if (target.dataset.target === 'feature') {
 			const scrollTo = document.querySelector('#feature');
-			scrollTo.scrollIntoView({
-				behavior: 'smooth'
-			});
+			if (scrollTo) {
+				scrollTo.scrollIntoView({
+					behavior: 'smooth'
+				});
+			}
 		} else if (target.dataset.target === 'download') {
 			window.location.href = `./${target.dataset.target}.html`;
-		} else {
+		}
+		else {
 			window.open('https://makinarocks.gitbook.io/link/', '_blank');
 		}
-
-	}
-	if (link == null) {
-		return;
 	}
 });
+navbarMenu.querySelector('.get_button').addEventListener('click', () => {
+	window.location.href = './start.html'
+})
 
 /**
  * narrow width에서 nav 아이콘 토글

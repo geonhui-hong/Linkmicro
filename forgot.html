@@ -8,9 +8,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 	<link rel="stylesheet" href="css/style1.css">
 	<link rel="stylesheet" href="css/download.css">
-	<script src="js/main.js" defer></script>
-	<script src="js/download.js"></script>
-	<title>Download</title>
+	<title>Forgot</title>
 </head>
 
 <body>
@@ -22,11 +20,11 @@
 					<a href="index.html"><img src="images/logo.svg" alt=""></a>
 				</div>
 				<ul class="navbar__menu">
-					<li class="navbar__menu__item active" data-target="index">
-						<a href="index.html">Features</a>
+					<li class="navbar__menu__item" data-target="feature" data-link="#feature">
+						Features
 					</li>
 					<li class="navbar__menu__item" data-target="download">
-						<a href="download.html">Download</a>
+						Download
 					</li>
 					<li class="navbar__menu__item" data-target="documentation">
 						<a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a>
@@ -49,20 +47,24 @@
 					<div class="title">Forgot Product Key</div>
 					<div class="sub_title">Enter the email that you entered for using link.<br>We’ll send your prdocut key.</div>
 				</div>
-				<div class="input_container">
-					<div class="email_container">
-						<div class="input_title">Email *</div>
-						<input type="text" id="fname" name="fname">
-						<div class="invalid_text">Email address is invalid</div>
+				<form id="forgot-form">
+					<div class="input_container">
+						<div class="email_container">
+							<div class="input_title">Email *</div>
+							<input type="text" id="email" name="email">
+							<div class="invalid_text" id="email_error_field">Email address is invalid</div>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 		<div class="button_container">
-			<button onclick="window.location.href='forgot1.html'" class="okay_button">Send email</button>
+			<!-- onclick="window.location.href='forgot1.html'"  -->
+			<button class="okay_button" id="submit">Send email</button>
 		</div>
 	</section>
 	<script src="js/navbar.js" defer></script>
+	<script src="js/forgot.js" defer></script>
 </body>
 
 </html>

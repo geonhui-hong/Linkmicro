@@ -18,7 +18,7 @@ if (form) {
  */
 const fname_error_field = document.querySelector('#fname_error_field');
 const lname_error_field = document.querySelector('#lname_error_field');
-const email_error_filed = document.querySelector('#email_error_field');
+const email_error_field = document.querySelector('#email_error_field');
 const organization_error_field = document.querySelector('#organization_error_field');
 
 if (submit_button) {
@@ -53,14 +53,14 @@ if (submit_button) {
 			}
 
 			if (formData.has('email') && formData.get('email').length === 0) {
-				email_error_filed.textContent = 'required';
-				email_error_filed.style.visibility = 'visible';
+				email_error_field.textContent = 'required';
+				email_error_field.style.visibility = 'visible';
 				throw new Error('last name has required');
 			}
 
 			if (formData.has('email') && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.get('email')) || formData.get('email').length < 5) {
-				email_error_filed.textContent = 'invalid';
-				email_error_filed.style.visibility = 'visible';
+				email_error_field.textContent = 'invalid';
+				email_error_field.style.visibility = 'visible';
 				throw new Error('not allowed value in email');
 			}
 
