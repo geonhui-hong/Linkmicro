@@ -24,7 +24,7 @@ const organization_error_field = document.querySelector('#organization_error_fie
 if (submit_button) {
 	submit_button.addEventListener('click', () => {
 		let isEnable = true;
-		if (!form || !isEnableSubmit) return;
+		if (!form || !isEnableSubmit || grecaptcha.getResponse().length === 0) return;
 		try {
 			const formData = new FormData(form);
 			if (formData.has('fname') && formData.get('fname').length === 0) {

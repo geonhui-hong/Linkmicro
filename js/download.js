@@ -45,6 +45,7 @@ emailInputTag.addEventListener('keydown', (event) => {
 	if (emailInputDebouncingID) clearTimeout(emailInputDebouncingID);
 	emailInputDebouncingID = setTimeout(() => {
 		checkIsEnableSubmit();
+		emailInputDebouncingID = null;
 	}, 300);
 })
 
@@ -52,6 +53,7 @@ productKeyInputTag.addEventListener('keydown', (event) => {
 	if (productKeyInputDebouncingID) clearTimeout(productKeyInputDebouncingID);
 	productKeyInputDebouncingID = setTimeout(() => {
 		checkIsEnableSubmit();
+		productKeyInputDebouncingID = null;
 	}, 300);
 })
 
