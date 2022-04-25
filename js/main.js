@@ -13,6 +13,29 @@ else{
   navbar.classList.remove('navbar--dark')
 }
 });
+const navbarMenu = document.querySelector('.navbar__menu');
+const navbarMenuItem = Array.from(navbarMenu.querySelectorAll('li'));
+navbarMenu.addEventListener('click',(event) =>{;
+  const target = event.target;
+  const link = target.dataset.link;
+  navbarMenuItem.forEach((item) => item.classList.remove('active'));
+  target.classList.add('active');
+  if(link == null){
+    return;
+  }
+  scrollIntoView(link);
+
+});
+
+function scrollIntoView(selector){
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({
+    behavior : 'smooth'
+  });
+
+}
+
+
 // const messages = {
 //   FeaturesTitle1: 'Pipeline creation',
 //   FeaturesDescription1: 'In Link, you can specify the relationship between cells as well as the execution sequence. You can create a pipeline on the same screen as the code to improve readability. ',
@@ -34,17 +57,6 @@ else{
 // putMessages();
 
 // 핸들 스크롤링
-const navbarMenu = document.querySelector('.navbar__menu');
-const navbarMenuItem = Array.from(navbarMenu.querySelectorAll('li'));
-navbarMenu.addEventListener('click',(event) =>{;
-  const target = event.target;
-  const link = target.dataset.link;
-  navbarMenuItem.forEach((item) => item.classList.remove('active'));
-  target.classList.add('active');
-  if(link == null){
-    return;
-  }
-});
 
 
 const toggleBtn = document.querySelector(".navbar__toggle");

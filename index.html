@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>link micro</title>
+    <title>link micro site</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
     <meta http-equiv="Content-Style-Type" content="text/css">
@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="apple-mobile-web-app-title" content="">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" href="images/logo_mini.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
@@ -23,11 +24,12 @@
         <div class="navbar_container">
             <div class="wrap">
                 <div class="navbar__logo">
-                    <a href="index.html"><img src="images/logo.svg" alt=""></a>
+                    <a href="index.html">
+                        <img src="images/logo.svg" alt=""></a>
                 </div>
                 <ul class="navbar__menu">
-                    <li class="navbar__menu__item active">
-                        <a href="index.html">Features</a>
+                    <li class="navbar__menu__item" data-link="#feature">
+                       Features
                     </li>
                     <li class="navbar__menu__item">
                         <a href="download.html">Download</a>
@@ -101,7 +103,7 @@
         <div class="partner">
             <div class="wrap">
             <p>Trusted by data teams</p>
-            <div class="partner_logo">
+            <div class="partner_logo" id="feature" >
                 <img src="https://www.makinarocks.ai/wp-content/uploads/2022/03/New_aimmo.jpg">
                 <img src="https://www.makinarocks.ai/wp-content/uploads/2022/03/New_CNAI.jpg">
                 <img src="https://www.makinarocks.ai/wp-content/uploads/2022/03/New_Encored.png">
@@ -119,7 +121,7 @@
         </div>
     </section>
 
-    <div class="section-tabs"  data-aos="fade-up"  data-aos-easing="ease-out-cubic"
+    <div class="section-tabs" data-aos="fade-up"  data-aos-easing="ease-out-cubic"
     data-aos-duration="500">
         <!-- Swiper Tab -->
         <div class="swiper-container swiper-tabs-nav">
@@ -183,13 +185,13 @@
                     <div>
                         <img src="images/feature_03_icon.svg" alt="">
                     </div>
-                    <div class="feature_title" id="features-title2">Easily collaboration</div>
-                    <div class="feature_desc" id="features-desc2">
+                    <div class="feature_title" id="features-title3">Easily collaboration</div>
+                    <div class="feature_desc" id="features-desc3">
                         You can save and share your outputs that are pipelines, components, caches, python codes. You can collaborate more comfortable  with Link
                     </div>
                 </div>
                 <div class="link_info_video1">
-                    <video src="images/video2.mp4" autoplay loop muted playsinline></video>
+                    <video src="images/video3.mp4" autoplay loop muted playsinline></video>
                 </div>
                 </div>
                 </div>
