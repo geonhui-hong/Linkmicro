@@ -63,7 +63,7 @@
   .please_desc a{color:#6C79F9;text-decoration: underline;text-align: center;}
   .login{display: flex;width:60rem;flex-direction: column;align-items: center;margin-top:4vh;}
 .login > .title{font-size:2.2rem;font-weight: 700;}
-.login .input_container{display:flex;flex-direction: column;gap:2rem; margin-top:4rem;width: 80%;max-width:440px;}
+.login .input_container{display:flex;flex-direction: column;gap:2rem; margin-left: 4rem;margin-top:4rem;width: 80%;max-width:440px;}
   .input_div{display: flex;gap:2rem;align-items: center;font-size:1.6rem;}
 .input_div input{height:3rem;width:100%;border: 1px solid #e0e0e0;padding-left:8px}
 .okay_button{background: #6C79F9;padding:1.2rem 2rem;color:#fff;font-weight:700;
