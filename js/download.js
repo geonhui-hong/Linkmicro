@@ -13,7 +13,7 @@ if (download_option_form) {
 
 const productRadio = document.querySelector('[name="product_type"]');
 const operationRadios = document.querySelectorAll('[name="operation_system"]')
-
+const versionRadios = document.querySelectorAll('[name="python_version"]');
 Array.from(operationRadios).forEach((el) => {
 	el.addEventListener('change', (event) => {
 		const selected = document.querySelector('input[name="operation_system"]:checked').value;
@@ -22,15 +22,32 @@ Array.from(operationRadios).forEach((el) => {
 			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
 			if (radio1) radio1.disabled = true;
 			if (radio2) radio2.disabled = true;
+			os_info_field.textContent = 'Only supported 3.8 and 3.9';
+			os_info_field.style.visibility = 'visible'
 		} else {
 			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
 			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
 			if (radio1) radio1.disabled = false;
 			if (radio2) radio2.disabled = false;
+			os_info_field.style.visibility = 'hidden'
 		}
 	})
 })
 
+const os_info_field = document.querySelector('#os_info_field');
+const version_info_field = document.querySelector('#version_info_field');
+Array.from(versionRadios).forEach((el) => {
+	el.addEventListener('change', (event) => {
+		const selected = document.querySelector('input[name="python_version"]:checked').value;
+		console.log(selected)
+		if (selected === "3.6") {
+			version_info_field.textContent = 'Only supported 3.6.13'
+			version_info_field.style.visibility = 'visible'
+		} else {
+			version_info_field.style.visibility = 'hidden'
+		}
+	})
+})
 
 /**
 	 * 폼
