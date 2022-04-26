@@ -175,7 +175,7 @@ submit_button.addEventListener('click', async () => {
 			xhr.send(JSON.stringify({
 				member_email: obj.email,
 				member_license_key: obj.product_key,
-				prodct_type: document.querySelector('input[name="product_type"]:checked').value,
+				product_type: document.querySelector('input[name="product_type"]:checked').value,
 				py_ver: document.querySelector('input[name="python_version"]:checked').value,
 				arch: os,
 				os: arch,
