@@ -448,6 +448,7 @@ p{
   font-size:1.4rem;margin-top:2rem;gap:1rem;font-weight:400;opacity:1;
   color:rgba(70, 69, 85 , 0.6)}
 .footer_contents > div{padding:1rem 0}
+.footer_contents > div > a{color: var(--color_black_desc)}
 .footer_contents > div img{width:10rem;}
 
 .copyright{font-size:1.4rem;color:var(--color_black_desc);text-align: center;border-top:1px solid #e0e0e0;padding-top:1rem;}
