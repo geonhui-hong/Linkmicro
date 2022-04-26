@@ -123,14 +123,14 @@ submit_button.addEventListener('click', async () => {
 					} else if (status === 200) {
 						console.log(event);
 						const temp = document.createElement('a');
-						const blob = new Blob([success.data], {
-							type: success.headers['content-type'],
+						const blob = new Blob([target.response], {
+							type: xhr.getResponseHeader('content-type'),
 						});
 						temp.setAttribute('href', URL.createObjectURL(blob));
 						// temp.setAttribute('href', URL.createObjectURL(success.data));
 						temp.setAttribute(
 							'download',
-							success.headers['content-disposition']
+							xhr.getResponseHeader('content-disposition')
 								.split('filename=')[1]
 								.replaceAll('"', ''),
 						);
@@ -167,7 +167,7 @@ submit_button.addEventListener('click', async () => {
 				os = 'linux';
 				arch = 'x86_64';
 			} else {
-				os = 'window';
+				os = 'windows';
 				arch = 'x86_64';
 			}
 			console.log(getLatestVersion(obj.email, obj.product_key))
@@ -177,8 +177,8 @@ submit_button.addEventListener('click', async () => {
 				member_license_key: obj.product_key,
 				product_type: document.querySelector('input[name="product_type"]:checked').value,
 				py_ver: document.querySelector('input[name="python_version"]:checked').value,
-				arch: os,
-				os: arch,
+				arch: arch,
+				os: os,
 				link_ver: version
 			}));
 		} catch (e) {
