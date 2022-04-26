@@ -104,6 +104,11 @@ a{text-decoration: none;}
   background: var(--color-red-color);
 }
 
+.info_field{
+	color:var(--color_black_desc);
+	font-size: 1.5rem;
+}
+
 .navbar__toggle {
   display: none;
 }

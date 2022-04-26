@@ -24,6 +24,7 @@
   background: rgba(178, 177, 199, 0.05);
   padding:2rem 4rem;
   border:1px solid #e0e0e0;
+	justify-content: space-around;
 }
 .download_list_radio_li{display: flex;align-items: center;gap:0.8rem;}
 .operation_list > li,.python_version.download_operation li{padding:0.8rem 2rem;}
