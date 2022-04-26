@@ -60,7 +60,7 @@
   .title{font-size:3.2rem;font-weight:700;text-align:center;position: relative;z-index:10;}
   .blue_box{position: absolute;background: #dee2ff;border-radius:8px; right:22px;top:12px
     ;width:8rem;height: 24px;}
-  .text_container .sub_title{font-size:1.4rem;line-height:1.2; color:rgba(70, 69, 85, 0.6);
+  .text_container .sub_title{font-size:1.4rem;margin-top:10px;line-height:1.2; color:rgba(70, 69, 85, 0.6);
 		text-align: center;margin-bottom:4rem;}
   .please_desc{font-size:1.4rem;display: flex;gap:8px;}
   .please_desc a{color:#6C79F9;text-decoration: underline;text-align: center;}

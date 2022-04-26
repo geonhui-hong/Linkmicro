@@ -442,7 +442,7 @@ p{
 .footer_logo{width:4rem;}
 .footer_logo img{width:100%;}
 .footer_flex_p{display: flex;flex-direction:column;}
-.footer_flex{display: flex; gap:10rem;margin-top:2rem;color:#464555}
+.footer_flex{display: flex; gap:10rem;margin-top:2rem;color:#464555;margin-bottom: 2rem;}
 .footer_title{font-size:1.8rem;font-weight: 700;}
 .footer_contents{display:flex;flex-direction: column; 
   font-size:1.4rem;margin-top:2rem;gap:1rem;font-weight:400;opacity:1;
