@@ -91,14 +91,31 @@ if (submit_button) {
 					const { target } = event;
 					if (target.readyState === XMLHttpRequest.DONE) {
 						const { status } = target;
-						console.log(status);
-						// start2.html
+						if (status === 422) {
+							console.log('error : ', target)
+						} else if (status === 200) {
+							window.location.href = './start2.html'
+						}
 					}
 				}
+				xhr.addEventListener('error', (event) => {
+					console.log(event);
+				});
 				xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
 
-				console.log(Object.fromEntries(new FormData(form)))
-				// xhr.send(Object.fromEntries(new FormData(form)));
+				const obj = Object.fromEntries(new FormData(form))
+				console.log(obj);
+				xhr.send(JSON.stringify({
+					customer_license_class: "Community",
+					company: obj.organization,
+					email: obj.email,
+					first_name: obj.fname,
+					last_name: obj.lname,
+					job_title: obj.job,
+					company: obj.organization,
+					agreement_private_policy: obj.agreement_private_policy === 'on' ? true : false,
+					agreement_marketing_policy: obj.agreement_marketing_policy === 'on' ? true : false
+				}));
 			} catch (e) {
 				console.log(e)
 			}

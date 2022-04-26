@@ -162,7 +162,7 @@ input[id="cb1"]:checked + label {
 .no_email_container{font-size:1.4rem;display: flex;flex-direction: column;gap:2rem;}
 .no_email_desc{opacity: 0.6;text-align: center;}
 .resend_container{text-align: center;}
-.resend_container a{color:#6C79F9;text-decoration: underline;}
+.resend_container a{color:#6C79F9;text-decoration: underline;cursor: pointer}
 
 /* forgot product key */
 .forgot_container{
