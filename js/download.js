@@ -76,7 +76,7 @@ const checkIsEnableSubmit = () => {
 	}
 }
 
-submit_button.addEventListener('click', () => {
+submit_button.addEventListener('click', async () => {
 	if (!isEnableSubmit || !form) return;
 	let isEnable = true;
 	try {
@@ -136,15 +136,76 @@ submit_button.addEventListener('click', () => {
 
 			const obj = Object.fromEntries(new FormData(form));
 			console.log(obj);
+
+			let os = '';
+			let arch = '';
+			const operation_system = document.querySelector('input[name="operation_system"]:checked').value
+			if (operation_system === "apple_silicon") {
+				os = 'mac';
+				arch = 'arm64'
+			} else if (operation_system === 'apple_intel') {
+				os = 'mac';
+				arch = 'x86_64';
+			} else if (operation_system === 'linux') {
+				os = 'linux';
+				arch = 'x86_64';
+			} else {
+				os = 'window';
+				arch = 'x86_64';
+			}
+			console.log(getLatestVersion(obj.email, obj.product_key))
+			let version = await getLatestVersion(obj.email, obj.product_key)
 			xhr.send(JSON.stringify({
 				member_email: obj.email,
 				member_license_key: obj.product_key,
 				prodct_type: document.querySelector('input[name="product_type"]:checked').value,
 				py_ver: document.querySelector('input[name="python_version"]:checked').value,
-				os: document.querySelector('input[name="operation_system"]:checked').value,
+				arch: os,
+				os: arch,
+				link_ver: version
 			}));
 		} catch (e) {
 			console.log(e)
 		}
 	}
 })
+
+function getLatestVersion(email, productkey) {
+	return new Promise((resolve, reject) => {
+		const xhr = new XMLHttpRequest();
+		const method = 'POST';
+		const url = 'https://dev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n/api/v1/link/link_release_notice/latest';
+		try {
+			xhr.open(method, url);
+			xhr.onreadystatechange = (event) => {
+				const { target } = event;
+				if (target.readyState === XMLHttpRequest.DONE) {
+					const { status } = target;
+					if (status === 422) {
+						console.log('error : ', target)
+					} else if (status === 200) {
+						const result = JSON.parse(target.response);
+						if (result.ok) {
+							resolve(result.result.link_ver);
+						}
+					} else {
+						const message = JSON.parse(target.response).detail
+						console.log(message);
+					}
+				}
+			}
+			xhr.addEventListener('error', (event) => {
+				reject(event);
+			});
+			xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
+
+			xhr.send(JSON.stringify({
+				member_email: email,
+				member_license_key: productkey
+			}));
+		} catch (e) {
+			reject(e);
+		}
+	})
+
+}
