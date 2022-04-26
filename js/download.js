@@ -105,21 +105,21 @@ submit_button.addEventListener('click', () => {
 						console.log('error : ', target)
 					} else if (status === 200) {
 						console.log(event);
-						// const temp = document.createElement('a');
-						// const blob = new Blob([success.data], {
-						// 	type: success.headers['content-type'],
-						// });
-						// temp.setAttribute('href', URL.createObjectURL(blob));
-						// // temp.setAttribute('href', URL.createObjectURL(success.data));
-						// temp.setAttribute(
-						// 	'download',
-						// 	success.headers['content-disposition']
-						// 		.split('filename=')[1]
-						// 		.replaceAll('"', ''),
-						// );
-						// document.body.appendChild(temp);
-						// temp.click();
-						// document.body.removeChild(temp);
+						const temp = document.createElement('a');
+						const blob = new Blob([success.data], {
+							type: success.headers['content-type'],
+						});
+						temp.setAttribute('href', URL.createObjectURL(blob));
+						// temp.setAttribute('href', URL.createObjectURL(success.data));
+						temp.setAttribute(
+							'download',
+							success.headers['content-disposition']
+								.split('filename=')[1]
+								.replaceAll('"', ''),
+						);
+						document.body.appendChild(temp);
+						temp.click();
+						document.body.removeChild(temp);
 					} else {
 						const message = JSON.parse(target.response).detail
 						if (message === 'MemberLicenseKeyMismatch') {
