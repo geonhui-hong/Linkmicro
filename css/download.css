@@ -1,4 +1,6 @@
 
+.modal{padding:30px 30px !important}
+.blocker{z-index: 1000 !important;}
 .download_container{display: flex;flex-direction:column;
   width:114rem;height:calc(100vh - 7rem);margin:0 auto;margin-top:7rem;align-items: center;justify-content: center;}
 .download_container .wrap{display: flex;flex-direction: column;gap:2rem;}
@@ -58,16 +60,17 @@
   .title{font-size:3.2rem;font-weight:700;text-align:center;position: relative;z-index:10;}
   .blue_box{position: absolute;background: #dee2ff;border-radius:8px; right:22px;top:12px
     ;width:8rem;height: 24px;}
-  .text_container .sub_title{font-size:1.4rem;line-height:1.2; color:rgba(70, 69, 85, 0.6);text-align: center;}
+  .text_container .sub_title{font-size:1.4rem;line-height:1.2; color:rgba(70, 69, 85, 0.6);
+		text-align: center;margin-bottom:4rem;}
   .please_desc{font-size:1.4rem;display: flex;gap:8px;}
   .please_desc a{color:#6C79F9;text-decoration: underline;text-align: center;}
-  .login{display: flex;width:60rem;flex-direction: column;align-items: center;margin-top:4vh;}
+  .login{display: flex;width:100%;flex-direction: column;align-items: center;}
 .login > .title{font-size:2.2rem;font-weight: 700;}
-.login .input_container{display:flex;flex-direction: column;gap:2rem; margin-left: 4rem;margin-top:4rem;width: 80%;max-width:440px;}
+.login .input_container{display:flex;flex-direction: column;gap:2rem;;width: 80%;max-width:440px;}
   .input_div{display: flex;gap:2rem;align-items: center;font-size:1.6rem;}
 .input_div input{height:3rem;width:100%;border: 1px solid #e0e0e0;padding-left:8px}
 .okay_button{background: #6C79F9;padding:1.2rem 2rem;color:#fff;font-weight:700;
-  border:none;border-radius: 30px;font-size:1.4rem;width: 24rem; opacity: 0.4;
+  border:none;border-radius: 30px;font-size:1.4rem;width: 24rem;text-align: center;opacity: 0.4;
 }
 .okay_button:hover{background: #95A0FF;}
 .border_button{border:1px solid #6C79F9;background: #fff;color:#6C79F9;

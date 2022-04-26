@@ -84,7 +84,7 @@ if (submit_button) {
 			try {
 				const xhr = new XMLHttpRequest();
 				const method = 'POST';
-				const url = 'https://homepage.api.admin.link.makinarocks.ai/jhigcbc8t19efxrtizc8wd20q/api/v1/homepage/customer/register';
+				const url = 'https://dev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n/api/v1/homepage/customer/register';
 
 				xhr.open(method, url);
 				xhr.onreadystatechange = (event) => {
@@ -92,9 +92,16 @@ if (submit_button) {
 					if (target.readyState === XMLHttpRequest.DONE) {
 						const { status } = target;
 						if (status === 422) {
-							console.log('error : ', target)
 						} else if (status === 200) {
-							window.location.href = './start2.html'
+							const response = JSON.parse(target.response);
+							if (response.ok === true) {
+								window.location.href = './start2.html'
+							} else {
+								if (response.err.code === 'CustomerDuplicated') {
+									email_error_field.textContent = 'duplicated email'
+									email_error_field.style.visibility = 'visible';
+								}
+							}
 						}
 					}
 				}
