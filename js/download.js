@@ -6,6 +6,10 @@ if (url.includes('pqxzhparpcft-help-web-dev.link.makinarocks.ai') || url.include
 	apiPrefix = 'https://homepage.api.admin.link.makinarocks.ai/jhigcbc8t19efxrtizc8wd20q'
 }
 
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	window.location.href = `./mobile.html`;
+}
+
 
 /**
 * 에러 필드
@@ -31,6 +35,7 @@ Array.from(operationRadios).forEach((el) => {
 			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
 			if (radio1) radio1.disabled = true;
 			if (radio2) radio2.disabled = true;
+			document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
 			os_info_field.textContent = '(macOS-Apple Silicon) Only Supported Python 3.8 and 3.9';
 			os_info_field.style.visibility = 'visible'
 		} else {
@@ -160,6 +165,8 @@ submit_button.addEventListener('click', async () => {
 						} else if (message === 'CustomerLicenseExpired') {
 							product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
 							product_key_error_field.style.visibility = 'visible';
+						} else {
+							console.error(message);
 						}
 					}
 				}
@@ -220,6 +227,9 @@ function getLatestVersion(email, productkey) {
 						const result = JSON.parse(target.response);
 						if (result.ok) {
 							resolve(result.result.link_ver);
+						} else {
+							if (result.err.code === 'NoSuchLinkReleaseNotice')
+								console.log(re)
 						}
 					} else {
 						const message = JSON.parse(target.response).detail

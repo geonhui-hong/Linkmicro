@@ -34,7 +34,8 @@ const organization_error_field = document.querySelector('#organization_error_fie
 if (submit_button) {
 	submit_button.addEventListener('click', () => {
 		let isEnable = true;
-		if (!form || !isEnableSubmit || grecaptcha.getResponse().length === 0) return;
+		// || grecaptcha.getResponse().length === 0
+		if (!form || !isEnableSubmit) return;
 		try {
 			const formData = new FormData(form);
 			if (formData.has('fname') && formData.get('fname').length === 0) {
@@ -107,7 +108,7 @@ if (submit_button) {
 							if (response.ok === true) {
 								window.location.href = './start2.html'
 							} else {
-								if (response.err.code === 'CustomerDuplicated') {
+								if (response.err.code === 'CustomerDuplicated' || response.err.code === 'MemberDuplicated') {
 									email_error_field.textContent = 'this email already exists'
 									email_error_field.style.visibility = 'visible';
 								}
@@ -130,7 +131,8 @@ if (submit_button) {
 					job_title: obj.job.trim(),
 					company: obj.organization.trim(),
 					agreement_private_policy: obj.agreement_private_policy === 'on' ? true : false,
-					agreement_marketing_policy: obj.agreement_marketing_policy === 'on' ? true : false
+					agreement_marketing_policy: obj.agreement_marketing_policy === 'on' ? true : false,
+					grecaptcha: grecaptcha.getResponse()
 				}));
 			} catch (e) {
 				console.log(e)
