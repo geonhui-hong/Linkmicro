@@ -122,6 +122,7 @@ submit_button.addEventListener('click', async () => {
 	} finally {
 		if (!isEnable) return;
 		try {
+			console.log(form);
 			const obj = Object.fromEntries(new FormData(form));
 			let os = '';
 			let arch = '';
@@ -145,6 +146,9 @@ submit_button.addEventListener('click', async () => {
 				'Content-Type': 'application/json',
 				withCredentials: true,
 			};
+			email_error_filed.style.visibility = 'hidden';
+			product_key_error_field.style.visibility = 'hidden';
+
 			const response = await axios.post(apiPrefix + '/api/v1/download/help/download', JSON.stringify({
 				member_email: obj.email.trim(),
 				member_license_key: obj.product_key.trim(),
@@ -154,7 +158,6 @@ submit_button.addEventListener('click', async () => {
 				os: os,
 				link_ver: version
 			}), {
-				apiPrefix,
 				headers,
 				responseEncoding: 'binary',
 				responseType: 'arraybuffer',
@@ -176,7 +179,20 @@ submit_button.addEventListener('click', async () => {
 			temp.click();
 			document.body.removeChild(temp);
 		} catch (e) {
-			console.log(e)
+			console.log(e);
+			// const message = JSON.parse(target.response).detail
+			if (e === 'MemberLicenseKeyMismatch') {
+				product_key_error_field.textContent = 'This product key is invalid';
+				product_key_error_field.style.visibility = 'visible';
+			} else if (e === 'NoSuchMemberEmail') {
+				email_error_filed.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
+				email_error_filed.style.visibility = 'visible';
+			} else if (e === 'CustomerLicenseExpired') {
+				product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
+				product_key_error_field.style.visibility = 'visible';
+			} else {
+				console.error(e);
+			}
 		}
 	}
 })
@@ -199,12 +215,11 @@ function getLatestVersion(email, productkey) {
 						if (result.ok) {
 							resolve(result.result.link_ver);
 						} else {
-							if (result.err.code === 'NoSuchLinkReleaseNotice')
-								console.log(re)
+							reject(result.err.code);
 						}
 					} else {
 						const message = JSON.parse(target.response).detail
-						console.log(message);
+						reject(message);
 					}
 				}
 			}
@@ -222,4 +237,16 @@ function getLatestVersion(email, productkey) {
 		}
 	})
 
+}
+
+function dialogScript() {
+	const emailInput = document.querySelector('#email');
+	if (emailInput) emailInput.value = ''
+	const productKeyInput = document.querySelector('#product_key');
+	if (productKeyInput) productKeyInput.value = ''
+
+	if (email_error_filed)
+		email_error_filed.style.visibility = 'hidden';
+	if (product_key_error_field)
+		product_key_error_field.style.visibility = 'hidden';
 }
