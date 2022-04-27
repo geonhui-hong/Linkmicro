@@ -122,58 +122,7 @@ submit_button.addEventListener('click', async () => {
 	} finally {
 		if (!isEnable) return;
 		try {
-			const xhr = new XMLHttpRequest();
-			const method = 'POST';
-			const url = apiPrefix + '/api/v1/download/help/download';
-
-			xhr.open(method, url);
-			xhr.onreadystatechange = (event) => {
-				const { target } = event;
-				if (target.readyState === XMLHttpRequest.DONE) {
-					const { status } = target;
-					if (status === 422) {
-						console.log('error : ', target)
-					} else if (status === 200) {
-						console.log(event);
-						const temp = document.createElement('a');
-						const blob = new Blob([target.response], {
-							type: xhr.getResponseHeader('content-type'),
-						});
-						temp.setAttribute('href', URL.createObjectURL(blob));
-						// temp.setAttribute('href', URL.createObjectURL(success.data));
-						temp.setAttribute(
-							'download',
-							xhr.getResponseHeader('content-disposition')
-								.split('filename=')[1]
-								.replaceAll('"', ''),
-						);
-						document.body.appendChild(temp);
-						temp.click();
-						document.body.removeChild(temp);
-					} else {
-						const message = JSON.parse(target.response).detail
-						if (message === 'MemberLicenseKeyMismatch') {
-							product_key_error_field.textContent = 'This product key is invalid';
-							product_key_error_field.style.visibility = 'visible';
-						} else if (message === 'NoSuchMemberEmail') {
-							product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
-							product_key_error_field.style.visibility = 'visible';
-						} else if (message === 'CustomerLicenseExpired') {
-							product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
-							product_key_error_field.style.visibility = 'visible';
-						} else {
-							console.error(message);
-						}
-					}
-				}
-			}
-			xhr.addEventListener('error', (event) => {
-				console.log(event);
-			});
-			xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
-
 			const obj = Object.fromEntries(new FormData(form));
-
 			let os = '';
 			let arch = '';
 			const operation_system = document.querySelector('input[name="operation_system"]:checked').value
@@ -191,7 +140,12 @@ submit_button.addEventListener('click', async () => {
 				arch = 'x86_64';
 			}
 			let version = await getLatestVersion(obj.email, obj.product_key)
-			xhr.send(JSON.stringify({
+
+			const headers = {
+				'Content-Type': 'application/json',
+				withCredentials: true,
+			};
+			const response = await axios.post(apiPrefix + '/api/v1/download/help/download', JSON.stringify({
 				member_email: obj.email.trim(),
 				member_license_key: obj.product_key.trim(),
 				product_type: document.querySelector('input[name="product_type"]:checked').value,
@@ -199,7 +153,28 @@ submit_button.addEventListener('click', async () => {
 				arch: arch,
 				os: os,
 				link_ver: version
-			}));
+			}), {
+				apiPrefix,
+				headers,
+				responseEncoding: 'binary',
+				responseType: 'arraybuffer',
+			});
+
+			const temp = document.createElement('a');
+			const blob = new Blob([response.data], {
+				type: response.headers['content-type'],
+			});
+			temp.setAttribute('href', URL.createObjectURL(blob));
+
+			temp.setAttribute(
+				'download',
+				response.headers['content-disposition']
+					.split('filename=')[1]
+					.replaceAll('"', ''),
+			);
+			document.body.appendChild(temp);
+			temp.click();
+			document.body.removeChild(temp);
 		} catch (e) {
 			console.log(e)
 		}
