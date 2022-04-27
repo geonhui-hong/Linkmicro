@@ -122,7 +122,6 @@ submit_button.addEventListener('click', async () => {
 	} finally {
 		if (!isEnable) return;
 		try {
-			console.log(form);
 			const obj = Object.fromEntries(new FormData(form));
 			let os = '';
 			let arch = '';
