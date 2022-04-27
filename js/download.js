@@ -177,21 +177,26 @@ submit_button.addEventListener('click', async () => {
 			document.body.appendChild(temp);
 			temp.click();
 			document.body.removeChild(temp);
-		} catch (e) {
-			console.log(e);
-			// const message = JSON.parse(target.response).detail
-			if (e === 'MemberLicenseKeyMismatch') {
-				product_key_error_field.textContent = 'This product key is invalid';
-				product_key_error_field.style.visibility = 'visible';
-			} else if (e === 'NoSuchMemberEmail') {
-				email_error_filed.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
-				email_error_filed.style.visibility = 'visible';
-			} else if (e === 'CustomerLicenseExpired') {
-				product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
-				product_key_error_field.style.visibility = 'visible';
-			} else {
 
+			const modalBackground = document.querySelector('.jquery-modal')
+			modalBackground.dispatchEvent(new Event('click'))
+		} catch (e) {
+			if (e.response) {
+				console.error(e)
+			} else {
+				// const message = JSON.parse(target.response).detail
+				if (e === 'MemberLicenseKeyMismatch') {
+					product_key_error_field.textContent = 'This product key is invalid';
+					product_key_error_field.style.visibility = 'visible';
+				} else if (e === 'NoSuchMemberEmail') {
+					email_error_filed.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
+					email_error_filed.style.visibility = 'visible';
+				} else if (e === 'CustomerLicenseExpired') {
+					product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
+					product_key_error_field.style.visibility = 'visible';
+				}
 			}
+
 		}
 	}
 })
