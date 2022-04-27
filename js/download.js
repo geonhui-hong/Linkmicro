@@ -6,10 +6,6 @@ if (url.includes('pqxzhparpcft-help-web-dev.link.makinarocks.ai') || url.include
 	apiPrefix = 'https://homepage.api.admin.link.makinarocks.ai/jhigcbc8t19efxrtizc8wd20q'
 }
 
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-	window.location.href = `./mobile.html`;
-}
-
 
 /**
 * 에러 필드
