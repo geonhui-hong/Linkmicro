@@ -38,7 +38,11 @@ navbarMenu.addEventListener('click', (event) => {
 				});
 			}
 		} else if (target.dataset.target === 'download') {
-			window.location.href = `./${target.dataset.target}.html`;
+			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				window.location.href = `./start.html`;
+			} else {
+				window.location.href = `./${target.dataset.target}.html`;
+			}
 		}
 		else {
 			window.open('https://makinarocks.gitbook.io/link/', '_blank');

@@ -1,3 +1,11 @@
+const url = window.location.href;
+let apiPrefix = '';
+if (url.includes('pqxzhparpcft-help-web-dev.link.makinarocks.ai') || url.includes('localhost') || url.includes('127.0.0.1')) {
+	apiPrefix = 'https://dev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n';
+} else {
+	apiPrefix = 'https://homepage.api.admin.link.makinarocks.ai/jhigcbc8t19efxrtizc8wd20q'
+}
+
 /**
  * 전역 변수
  */
@@ -49,7 +57,7 @@ submit_button.addEventListener('click', () => {
 	try {
 		const formData = new FormData(form)
 		if (formData.has('email') && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.get('email'))) {
-			email_error_filed.textContent = 'This Email is invalid';
+			email_error_filed.textContent = 'This email is invalid';
 			email_error_filed.style.visibility = 'visible';
 			isEnable = false;
 			throw new Error('not allowed value in email')
@@ -61,7 +69,7 @@ submit_button.addEventListener('click', () => {
 		try {
 			const xhr = new XMLHttpRequest();
 			const method = 'POST';
-			const url = 'https://dev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n/api/v1/homepage/member_license/forgot';
+			const url = apiPrefix + '/api/v1/homepage/member_license/forgot';
 
 			xhr.open(method, url);
 			xhr.onreadystatechange = (event) => {
@@ -73,18 +81,12 @@ submit_button.addEventListener('click', () => {
 					} else if (status === 200) {
 						const response = JSON.parse(target.response);
 						if (response.ok === true) {
-							console.log("success")
+							window.location.href = './forgot1.html'
 						} else {
 							if (response.err.code === 'NoSuchEmail') {
-								email_error_field.textContent = 'not exist email'
+								email_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”'
 								email_error_field.style.visibility = 'visible';
 							}
-						}
-					} else {
-						const message = JSON.parse(target.response).detail
-						if (message === 'MemberLicenseKeyMismatch') {
-							product_key_error_field.textContent = 'Product key is invalid';
-							product_key_error_field.style.visibility = 'visible';
 						}
 					}
 				}
@@ -95,9 +97,8 @@ submit_button.addEventListener('click', () => {
 			xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
 
 			const obj = Object.fromEntries(new FormData(form));
-			console.log(obj);
 			xhr.send(JSON.stringify({
-				member_email: obj.email
+				member_email: obj.email.trim()
 			}));
 		} catch (e) {
 			console.log(e)

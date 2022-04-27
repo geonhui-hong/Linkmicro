@@ -1,3 +1,12 @@
+const url = window.location.href;
+let apiPrefix = '';
+if (url.includes('pqxzhparpcft-help-web-dev.link.makinarocks.ai') || url.includes('localhost') || url.includes('127.0.0.1')) {
+	apiPrefix = 'https://dev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n';
+} else {
+	apiPrefix = 'https://homepage.api.admin.link.makinarocks.ai/jhigcbc8t19efxrtizc8wd20q'
+}
+
+
 /**
 * 에러 필드
 */
@@ -111,7 +120,7 @@ submit_button.addEventListener('click', async () => {
 		try {
 			const xhr = new XMLHttpRequest();
 			const method = 'POST';
-			const url = 'https://dev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n/api/v1/download/help/download';
+			const url = apiPrefix + '/api/v1/download/help/download';
 
 			xhr.open(method, url);
 			xhr.onreadystatechange = (event) => {
@@ -140,7 +149,13 @@ submit_button.addEventListener('click', async () => {
 					} else {
 						const message = JSON.parse(target.response).detail
 						if (message === 'MemberLicenseKeyMismatch') {
-							product_key_error_field.textContent = 'Product key is invalid';
+							product_key_error_field.textContent = 'This product key is invalid';
+							product_key_error_field.style.visibility = 'visible';
+						} else if (message === 'NoSuchMemberEmail') {
+							product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
+							product_key_error_field.style.visibility = 'visible';
+						} else if (message === 'CustomerLicenseExpired') {
+							product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
 							product_key_error_field.style.visibility = 'visible';
 						}
 					}
@@ -152,7 +167,6 @@ submit_button.addEventListener('click', async () => {
 			xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
 
 			const obj = Object.fromEntries(new FormData(form));
-			console.log(obj);
 
 			let os = '';
 			let arch = '';
@@ -170,11 +184,10 @@ submit_button.addEventListener('click', async () => {
 				os = 'windows';
 				arch = 'x86_64';
 			}
-			console.log(getLatestVersion(obj.email, obj.product_key))
 			let version = await getLatestVersion(obj.email, obj.product_key)
 			xhr.send(JSON.stringify({
-				member_email: obj.email,
-				member_license_key: obj.product_key,
+				member_email: obj.email.trim(),
+				member_license_key: obj.product_key.trim(),
 				product_type: document.querySelector('input[name="product_type"]:checked').value,
 				py_ver: document.querySelector('input[name="python_version"]:checked').value,
 				arch: arch,
@@ -191,7 +204,7 @@ function getLatestVersion(email, productkey) {
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
 		const method = 'POST';
-		const url = 'https://dev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n/api/v1/link/link_release_notice/latest';
+		const url = apiPrefix + '/api/v1/link/link_release_notice/latest';
 		try {
 			xhr.open(method, url);
 			xhr.onreadystatechange = (event) => {
