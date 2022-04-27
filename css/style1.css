@@ -121,7 +121,7 @@ a{text-decoration: none;}
 border:none;border-radius: 30px;}
 .get_button:hover{background:#95A0FF;cursor:pointer;}
 .youtube_button{border:1px solid #6C79F9;color:#6C79F9;border-radius:30px;padding:1.2rem 1.6rem;
-background: #fff;display: flex;align-items: center;gap:0.4rem;text-decoration: none;}
+background: #fff;display: flex;align-items: center;gap:0.8rem;text-decoration: none;font-weight: 700;}
 .youtube_button img{fill:#6C79F9}
 .language{display: flex;align-items: center;}
 .language span{display:block;width:1px;height:10px;background:#464555;}
@@ -433,12 +433,12 @@ p{
   position: relative;
 }
 #contact{
-  max-width: 114rem;
+	border-top: 1px solid #e0e0e0;
   margin:0 auto;
   padding:4rem 0;
 }
 #contact > div{
-  width: 92%;
+  width: 104.8rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -458,7 +458,7 @@ p{
 .footer_contents > div > a{color: var(--color_black_desc)}
 .footer_contents > div img{width:10rem;}
 
-.copyright{font-size:1.4rem;color:var(--color_black_desc);text-align: center;border-top:1px solid #e0e0e0;padding-top:1rem;}
+.copyright{font-size:1.4rem;color:var(--color_black_desc);text-align: center;padding-top:1rem;}
 .br{display:block;}
 .tab_br{display: inline;}
 .mo_no{display: inline;}
@@ -689,5 +689,7 @@ p{
   .download_page{width:100vw;}
 #contact{width:100%;border-top: 1px solid #e0e0e0;}
 .footer_flex{gap:2rem;margin-bottom:4rem;}
+#contact > div{width: 100%;padding:2rem;box-sizing: border-box;}
+.get_button,.youtube_button{width:50%;justify-content: center;}
 
 }

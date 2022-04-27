@@ -2,8 +2,8 @@
 .modal{padding:30px 30px !important}
 .blocker{z-index: 1000 !important;}
 .download_container{display: flex;flex-direction:column;
-  width:114rem;height:calc(100vh - 7rem);margin:0 auto;margin-top:7rem;align-items: center;justify-content: center;}
-.download_container .wrap{display: flex;flex-direction: column;gap:2rem;}
+  width:114rem;margin:0 auto;margin-top:7rem;align-items: center;justify-content: center;}
+.download_container .wrap{display: flex;flex-direction: column;gap:2rem;margin:7rem 0;}
 .download_title{display: flex; align-items: center;gap:0.8rem}
 .download_title div img{width:70%;}
 .download_list_container{display: flex;flex-direction: column;}
@@ -49,7 +49,7 @@
   align-items: center;
   gap:2rem;
 }
-.download_list_radio_li label{display: flex;gap:0.4rem;align-items: center;}
+.download_list_radio_li label{display: flex;gap:0.4rem;align-items: center;padding: 1rem}
 .intel{display:inline-blocks;background-color: #EAFAFF;color:#18C7FE;font-size:1.3rem;padding:0.4rem 0.8rem 0.6rem;border-radius:30px;;}
 .apple_silicon{display:inline-block;background-color:#FFF1E0;color:#FF8A00;font-size:1.3rem;padding:0.4rem 0.8rem 0.6rem;border-radius: 30px;}
 .python_version > ul{max-width:80rem;margin:0 auto;margin-top:4rem;display:flex;
@@ -67,11 +67,13 @@
   .please_desc a{color:#6C79F9;text-decoration: underline;text-align: center;}
   .login{display: flex;width:100%;flex-direction: column;align-items: center;}
 .login > .title{font-size:2.2rem;font-weight: 700;}
-.login .input_container{display:flex;flex-direction: column;gap:2rem;;width: 80%;max-width:440px;}
+.login .input_container{display:flex;flex-direction: column;gap:2rem;;width: 80%;max-width:440px;margin-top:4rem;}
   .input_div{display: flex;gap:2rem;align-items: center;font-size:1.6rem;}
 .input_div input{height:3rem;width:100%;border: 1px solid #e0e0e0;padding-left:8px}
-.okay_button{background: #6C79F9;padding:1.2rem 2rem;color:#fff;font-weight:700;
+.okay_button{background: #6C79F9;color:#fff;font-weight:700;
   border:none;border-radius: 30px;font-size:1.4rem;width: 24rem;text-align: center;opacity: 1;
+	display: flex;justify-content: center;align-items: center;
+	height:4rem;
 }
 .okay_disable{background: #e0e0e0;;}
 .okay_button:hover{background: #95A0FF;}
@@ -91,7 +93,7 @@
   margin:0 auto;
   gap:8rem;;}
 .start_visual img{height: 50%;max-height:500px}
-.start_input_container{width:100%;display: flex;justify-content: center;margin-top: 4rem;;}
+.start_input_container{width:100%;display: flex;justify-content: center;margin-top: 8rem;padding-bottom:8rem;}
 .start_input{
   display: flex;
   flex-direction: column;
@@ -145,7 +147,7 @@ input:invalid{
 .organaization_example{font-size:1.2rem;opacity: 0.6;margin-left:0.4rem;font-weight: 400;;}
 .button_container{display: flex;justify-content: center;width:100%;}
 .start_wrap{display: flex;flex-direction: column;gap:2rem;}
-.start_check_container{display: flex;gap:0.4rem;font-size:1.4rem;font-weight:400;}
+.start_check_container{display: flex;gap:0.4rem;font-size:1.4rem;font-weight:400;line-height: 1.4;}
 .start_check_container label{opacity: 0.6;}
 .start2{
   margin:0 auto;
@@ -155,8 +157,8 @@ input:invalid{
   align-items: center;
   justify-content: center;
 }
-.start2 > .container{display: flex;margin-top:4rem;margin-bottom:4rem;flex-direction: column;justify-content: center;align-items: center;gap:2rem;width: 100%;}
-.start2 img{width:80%;margin:0 auto;}
+.start2 > .container{display: flex;padding-top:8rem;padding-bottom:8rem;flex-direction: column;justify-content: center;align-items: center;gap:2rem;width: 100%;}
+.start2 img{width:60%;margin:0 auto;}
 .no_email_container{font-size:1.4rem;display: flex;flex-direction: column;gap:2rem;}
 .no_email_desc{opacity: 0.6;text-align: center;}
 .resend_container{text-align: center;}
@@ -180,6 +182,8 @@ input:invalid{
 .content_section{display: flex;flex-direction: column;gap:2rem;}
 .computer_visual_section{width:50%;margin:0 auto;}
 .computer_visual_section img{width: 100%;}
+.start_check_container a{text-decoration: underline;}
+.download_container .sub_title a{color:#6C79F9;text-decoration:underline;}
 @media screen and (max-width: 450px) {
   .link_character{
     width:40%;
