@@ -61,7 +61,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="please_desc">Please touch <a href="start.html">'Get Started for Free'</a>if you need product key</div>
+			<div class="please_desc">Please click <a href="start.html">'Get Started for Free'</a>if you need product key</div>
 		</div>
 	</section>
 	<section class="download_container">
@@ -73,12 +73,12 @@
 						<div class="title">Product Type</div>
 						<div class="download_list_radio">
 							<div class="download_list_radio_li">
-								<input type="radio" name="product_type" value="desktop" checked>
-								<label for="html">Desktop</label>
+								<input type="radio" name="product_type" id="css" value="whl">
+								<label for="css">Python Package (.whl)</label>
 							</div>
 							<div class="download_list_radio_li">
-								<input type="radio" name="product_type" value="whl">
-								<label for="css">Python Package (.whl)</label>
+								<input type="radio" name="product_type" id="desktop" value="desktop" checked>
+								<label for="desktop">Desktop Application</label>
 							</div>
 						</div>
 					</div>
@@ -88,21 +88,21 @@
 							<li>
 								<label for="window"> <img src="images/os1.svg" alt=""></label>
 								<div class="download_list_radio_li">
-									<input type="radio" name="operation_system" value="window" checked>
+									<input type="radio" name="operation_system" id="window" value="window" checked>
 									<label for="window">Windows</label>
 								</div>
 							</li>
 							<li>
 								<label for="intel"><img src="images/os2.svg" alt=""></label>
 								<div class="download_list_radio_li">
-									<input type="radio" name="operation_system" value="apple_intel">
+									<input type="radio" name="operation_system" id="intel" value="apple_intel">
 									<label for="intel"><span class="mo_no">macOS</span><span class="intel">Intel</span></label>
 								</div>
 							</li>
 							<li>
 								<label for="apple_silicon"><img src="images/os2.svg" alt=""></label>
 								<div class="download_list_radio_li">
-									<input type="radio" name="operation_system" value="apple_silicon">
+									<input type="radio" name="operation_system" id="apple_silicon" value="apple_silicon">
 									<label for="apple_silicon"><span class="mo_no">macOS</span><span class="apple_silicon">Apple
 											Silicon</span></label>
 								</div>
@@ -110,7 +110,7 @@
 							<li>
 								<label for="linux"><img src="images/os3.svg" alt=""></label>
 								<div class="download_list_radio_li">
-									<input type="radio" name="operation_system" value="linux">
+									<input type="radio" name="operation_system" id="linux" value="linux">
 									<label for="linux">Linux</label>
 								</div>
 							</li>
@@ -121,19 +121,19 @@
 						<div class="title">Python Version</div>
 						<ul class="download_list_radio">
 							<div class="download_list_radio_li">
-								<input type="radio" name="python_version" value="3.6">
+								<input type="radio" name="python_version" id="3.6" value="3.6">
 								<label for="3.6">3.6</label>
 							</div>
 							<div class="download_list_radio_li">
-								<input type="radio" name="python_version" value="3.7">
+								<input type="radio" name="python_version" id="3.7" value="3.7">
 								<label for="3.7">3.7</label>
 							</div>
 							<div class="download_list_radio_li">
-								<input type="radio" name="python_version" value="3.8">
+								<input type="radio" name="python_version" id="3.8" value="3.8">
 								<label for="3.8">3.8</label>
 							</div>
 							<div class="download_list_radio_li">
-								<input type="radio" name="python_version" value="3.9" checked>
+								<input type="radio" name="python_version" id="3." value="3.9" checked>
 								<label for="3.9">3.9</label>
 							</div>
 						</ul>

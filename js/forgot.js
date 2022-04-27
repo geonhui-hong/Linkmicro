@@ -20,7 +20,9 @@ if (form) {
 	})
 }
 const submit_button = document.querySelector('#submit');
-
+if (submit_button) {
+	submit_button.style.backgroundColor = '#e0e0e0';
+}
 submit_button.addEventListener('click', () => {
 	if (!isEnableSubmit) return;
 	const formData = new FormData(form);
@@ -43,10 +45,10 @@ emailInputTag.addEventListener('keydown', (event) => {
 
 const checkIsEnableSubmit = () => {
 	if (emailInputTag.value.length > 0) {
-		submit_button.style.opacity = 1;
+		submit_button.style.backgroundColor = '#6C79F9';
 		isEnableSubmit = true;
 	} else {
-		submit_button.style.opacity = 0.4;
+		submit_button.style.backgroundColor = '#e0e0e0';
 		isEnableSubmit = false;
 	}
 }

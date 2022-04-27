@@ -1,6 +1,6 @@
 const navbar = document.querySelector('#navbar');
 const home = document.querySelector('#home');
-
+const start = document.querySelector('.start_for_free');
 /**
  * 스크롤 할 때 nav가 투명해지거나 불투명해지거나 조절함
  */
@@ -33,13 +33,16 @@ navbarMenu.addEventListener('click', (event) => {
 		if (target.dataset.target === 'feature') {
 			const scrollTo = document.querySelector('#feature');
 			if (scrollTo) {
-				scrollTo.scrollIntoView({
-					behavior: 'smooth'
-				});
+				// scrollTo.scrollIntoView({
+				// 	behavior: 'smooth'
+				// });
+				menu.classList.toggle('active');
+				document.body.classList.toggle('hambuger_overflow')
+				toggleBtn.classList.toggle('open');
 			}
 		} else if (target.dataset.target === 'download') {
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-				window.location.href = `./start.html`;
+				window.location.href = `./mobile.html`;
 			} else {
 				window.location.href = `./${target.dataset.target}.html`;
 			}

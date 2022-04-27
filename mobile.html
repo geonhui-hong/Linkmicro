@@ -8,10 +8,13 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 	<link rel="stylesheet" href="css/style1.css">
 	<link rel="stylesheet" href="css/download.css">
-	<title>start</title>
+	<script src="js/main.js" defer></script>
+	<script src="js/download.js"></script>
+	<title>Download</title>
 </head>
 
 <body>
+	<!-- navbar -->
 	<nav id="navbar">
 		<div class="navbar_container">
 			<div class="wrap">
@@ -20,7 +23,7 @@
 				</div>
 				<ul class="navbar__menu">
 					<li class="navbar__menu__item" data-target="feature" data-link="#feature">
-						Features
+						<a href="index.html">Features</a>
 					</li>
 					<li class="navbar__menu__item" data-target="download">
 						Download
@@ -36,28 +39,23 @@
 			</div>
 		</div>
 	</nav>
-	<section class="start2">
-		<div class="container">
-			<div class="email_img">
-				<img src="images/email_icon.svg" alt="">
-			</div>
-			<div class="text_container">
-				<div class="title">Check your email.</div>
-				<div class="sub_title">Your application is successfully completed.</div>
-			</div>
-			<div class="button_container">
-				<button onclick="window.location.href='index.html'" class="border_button">Go Home</button>
-				<button class="okay_button" id="download_button">Download
-					Link</button>
-			</div>
-			<!-- <div class="no_email_container">
-				<div class="no_email_desc">Still can’t fine the email?<br>
-					Please, check your SPAM or junk mail folder.
+	<section class="not_supported_container">
+		<div class="not_supported_wrap">
+			<div class="content_section ">
+				<div class="computer_visual_section">
+					<img src="images/computer.svg" alt="">
 				</div>
-				<div class="resend_container">
-					<a id="resend_button"> Resend verification email </a>
+				<div class="text_container">
+					<div class="title">
+						Device not supported
+					</div>
+					<div class="sub_title">Download pages support only desktop.<br>
+						Please use other devices.</div>
 				</div>
-			</div> -->
+			</div>
+		</div>
+		<div class="button_container">
+			<button onclick="window.location.href='index.html'" class="okay_button">Home</button>
 		</div>
 	</section>
 	<footer id="contact">
@@ -111,9 +109,8 @@
 			</div>
 			<div class="copyright">Copyright© MakinaRocks 2022. All Rights Reserved.</div>
 	</footer>
+	<script src="js/main.js" defer></script>
 	<script src="js/navbar.js" defer></script>
-	<script src="js/start2.js" defer></script>
-</body>
 </body>
 
 </html>

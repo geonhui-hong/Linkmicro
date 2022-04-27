@@ -39,6 +39,7 @@ a{text-decoration: none;}
   box-sizing: border-box;
   z-index: 100;
   border:1px solid #e0e0e0;
+	background: #fff;
 }
 .navbar_container{
   max-width: 114rem;
@@ -124,8 +125,9 @@ background: #fff;display: flex;align-items: center;gap:0.4rem;text-decoration: n
 .youtube_button img{fill:#6C79F9}
 .language{display: flex;align-items: center;}
 .language span{display:block;width:1px;height:10px;background:#464555;}
-#home{width:100vw;height:70vh;
-  margin-top:7rem;background-image:
+#home{width:100vw;
+	margin-top: 7rem;
+  background-image:
   linear-gradient(90deg, var(--pattern_1) 0px,var(--pattern_1) 1px, transparent 1px, transparent 99px,  transparent 100px),
   linear-gradient(var(--pattern_1) 0px, var(--pattern_1) 1px, transparent 1px, transparent 99px,  transparent 100px),
   linear-gradient(var(--pattern_2) 0px, var(--pattern_2) 1px, transparent 1px, transparent 99px,  transparent 100px),
@@ -141,8 +143,7 @@ background-size:100px 100%, 100% 100px, 100% 10px, 10px 100%, 100% 100px, 100px 
   max-width: 114rem;
   margin:0 auto;
   display: flex;
-  height:70vh;
-
+  padding:8rem;
   gap:5rem;}
   .visual_container{
     display: flex;
@@ -221,8 +222,9 @@ p{
   margin-top:8rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.partner_logo img{max-width:16.6%;}
+.partner_logo img{max-width:15rem;}
 .swiper_div{max-width: 114rem;margin:0 auto;}
 .section-tabs {
   padding-top: 4rem;
@@ -532,6 +534,7 @@ p{
   .navbar__menu.active {
     display: flex;
     top:0;
+    width: 100%;
  
 
   }
@@ -544,7 +547,7 @@ p{
     display: block;
     position: absolute;
     top: 50%;
-    right: 1rem;
+    right: 2rem;
     transform: translateY(-50%);
     display: flex;
     width: 24px;
@@ -631,7 +634,7 @@ p{
     padding:2rem;
     justify-content: space-around;
     gap:0;
-    height:calc(100% - 7rem);
+
     box-sizing: border-box;
   }
   .title_section{margin-top:0vh;width:100%;max-width:100%;gap:2rem}
@@ -684,7 +687,7 @@ p{
   .tab_br{display: block;}
   .mo_no{display: none;}
   .download_page{width:100vw;}
-#contact{width:100%;}
+#contact{width:100%;border-top: 1px solid #e0e0e0;}
 .footer_flex{gap:2rem;margin-bottom:4rem;}
 
 }
