@@ -665,7 +665,7 @@ p{
     justify-content: flex-start;
     height: 8vh;
   }
-  .partner_logo img{width:25%;}
+  .partner_logo img{width:50%;}
   .swiper-tabs-nav{width: 100%;}
   .swiper-wrapper{width: 100%;}
   .swiper-tabs-nav .swiper-slide{width:33.3% !important;}
