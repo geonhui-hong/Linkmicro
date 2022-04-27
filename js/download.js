@@ -190,7 +190,7 @@ submit_button.addEventListener('click', async () => {
 				product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
 				product_key_error_field.style.visibility = 'visible';
 			} else {
-				console.error(e);
+
 			}
 		}
 	}
