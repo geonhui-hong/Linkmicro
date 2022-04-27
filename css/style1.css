@@ -477,6 +477,7 @@ p{
 
 .copyright{font-size:1.4rem;color:var(--color_black_desc);text-align: center;padding-top:1rem;}
 .br{display:block;}
+.margin-br {margin-left: 6px;}
 .tab_br{display: inline;}
 .mo_no{display: inline;}
 .support_section{
