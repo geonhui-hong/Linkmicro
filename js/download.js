@@ -122,6 +122,8 @@ submit_button.addEventListener('click', async () => {
 	} finally {
 		if (!isEnable) return;
 		try {
+			if (window.MRXAnalytics) MRXAnalytics.sendEvent("linkDownload");
+
 			const obj = Object.fromEntries(new FormData(form));
 			let os = '';
 			let arch = '';

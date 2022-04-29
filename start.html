@@ -34,7 +34,7 @@
 						Download
 					</li>
 					<li class="navbar__menu__item" data-target="documentation">
-						<a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a>
+						Documentation
 					</li>
 					<button class="get_button">Get Started for Free</button>
 				</ul>
@@ -185,6 +185,11 @@
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 	<script src="./js/navbar.js" defer></script>
 	<script src="./js/start.js" defer></script>
+	<script type="module">
+		import MRXAnalytics from '/js/analytics.js';
+		MRXAnalytics.screenView('StartForm');
+		MRXAnalytics.sendEvent("linkStartForm");
+	</script>
 </body>
 
 </html>

@@ -49,6 +49,8 @@ navbarMenu.addEventListener('click', (event) => {
 		}
 		else {
 			window.open('https://makinarocks.gitbook.io/link/', '_blank');
+
+			if (window.MRXAnalytics) MRXAnalytics.sendEvent("linkDoc");
 		}
 	}
 });

@@ -29,7 +29,7 @@
 						Download
 					</li>
 					<li class="navbar__menu__item" data-target="documentation">
-						<a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a>
+						Documentation
 					</li>
 					<button class="get_button">Get Started for Free</button>
 				</ul>
@@ -209,6 +209,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" defer></script>
 	<!-- jQuery Modal -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js" defer></script>
+	<script type="module">
+		import MRXAnalytics from '/js/analytics.js';
+		MRXAnalytics.screenView('Download');
+		MRXAnalytics.sendEvent("linkDlpage");
+	</script>
 </body>
 
 </html>
