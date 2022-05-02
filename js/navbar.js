@@ -1,3 +1,6 @@
+/** 
+ * 
+ */
 const navbar = document.querySelector('#navbar');
 const home = document.querySelector('#home');
 const start = document.querySelector('.start_for_free');
@@ -33,11 +36,11 @@ navbarMenu.addEventListener('click', (event) => {
 		if (target.dataset.target === 'feature') {
 			const scrollTo = document.querySelector('#feature');
 			if (scrollTo) {
-				// scrollTo.scrollIntoView({
-				// 	behavior: 'smooth'
-				// });
+				scrollTo.scrollIntoView({
+					behavior: 'smooth'
+				});
 				menu.classList.toggle('active');
-				document.body.classList.toggle('hambuger_overflow')
+				// document.body.classList.toggle('hambuger_overflow')
 				toggleBtn.classList.toggle('open');
 			}
 		} else if (target.dataset.target === 'download') {
@@ -67,6 +70,6 @@ const close = document.getElementsByClassName("close");
 
 toggleBtn.addEventListener('click', () => {
 	menu.classList.toggle('active');
-	document.body.classList.toggle('hambuger_overflow')
+	// document.body.classList.toggle('hambuger_overflow')
 	toggleBtn.classList.toggle('open');
 });

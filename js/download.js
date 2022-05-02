@@ -1,3 +1,7 @@
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+	window.location.href = `./mobile.html`;
+}
+
 const url = window.location.href;
 let apiPrefix = '';
 if (url.includes('pqxzhparpcft-help-web-dev.link.makinarocks.ai') || url.includes('localhost') || url.includes('127.0.0.1')) {
@@ -32,7 +36,7 @@ Array.from(operationRadios).forEach((el) => {
 			if (radio1) radio1.disabled = true;
 			if (radio2) radio2.disabled = true;
 			document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
-			os_info_field.textContent = '(macOS-Apple Silicon) Only Supported Python 3.8 and 3.9';
+			os_info_field.textContent = '(macOS-Apple Silicon) Only Python 3.8 and 3.9 are supported';
 			os_info_field.style.visibility = 'visible'
 		} else {
 			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
@@ -51,7 +55,7 @@ Array.from(versionRadios).forEach((el) => {
 		const selected = document.querySelector('input[name="python_version"]:checked').value;
 		console.log(selected)
 		if (selected === "3.6") {
-			version_info_field.textContent = '(Python-3.6) Only Supported Python 3.6.13'
+			version_info_field.innerHTML = '(Python-3.6) Only Python 3.6.13 supported'
 			version_info_field.style.visibility = 'visible'
 		} else {
 			version_info_field.style.visibility = 'hidden'
