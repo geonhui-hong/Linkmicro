@@ -186,6 +186,7 @@ submit_button.addEventListener('click', async () => {
 
 			const modalBackground = document.querySelector('.jquery-modal')
 			modalBackground.dispatchEvent(new Event('click'))
+			window.location.href = './thanks.html'
 		} catch (e) {
 			if (e.response) {
 				console.error(e)

@@ -59,8 +59,8 @@ submit_button.addEventListener('click', () => {
 	try {
 		const formData = new FormData(form)
 		if (formData.has('email') && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.get('email'))) {
-			email_error_filed.textContent = 'This email is invalid';
-			email_error_filed.style.visibility = 'visible';
+			email_error_field.textContent = 'This email is invalid';
+			email_error_field.style.visibility = 'visible';
 			isEnable = false;
 			throw new Error('not allowed value in email')
 		}

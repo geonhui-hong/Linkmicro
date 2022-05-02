@@ -103,15 +103,15 @@
 						<div class="start_check_container">
 							<input type="checkbox" id="agreement_private_policy" name="agreement_private_policy">
 							<label class="label_for_check" for="agreement_private_policy">
-								(Required) I have read and fully agree to <a href="https://www.makinarocks.ai/terms/"
-									target="_blank">the terms of use</a> and <a href="https://www.makinarocks.ai/privacy-policy/"
-									target="_blank">privacy policy.</a>
+								(Required) I have read and fully agree to <a href="https://www.makinarocks.ai/en/terms/"
+									target="_blank">end-user license agreement </a> and <a
+									href="https://www.makinarocks.ai/en/privacy-policy/" target="_blank">privacy policy.</a>
 							</label>
 						</div>
 						<div class="start_check_container">
 							<input type="checkbox" id="agreement_marketing_policy" name="agreement_marketing_policy">
 							<label class="label_for_check" for="agreement_marketing_policy">
-								(Optional) I agree to receive <a href="https://www.makinarocks.ai/privacy-policy/"
+								(Optional) I agree to receive <a href="https://www.makinarocks.ai/en/privacy-policy/"
 									target="_blank">promotion and marketing information</a> related to MakinaRocks.
 							</label>
 						</div>
@@ -127,6 +127,7 @@
 			</div>
 		</form>
 	</section>
+	<!-- contact -->
 	<footer id="contact">
 		<div class="footer_p">
 			<div class="footer_flex_p">
@@ -151,7 +152,7 @@
 						<div class="footer_contents">
 							<div>
 								<a href="https://makinarocks.gitbook.io/link/getting_started/installation" target="_blank">
-									Install Guide
+									How to install
 								</a>
 							</div>
 							<div>
@@ -176,7 +177,13 @@
 				</div>
 			</div> -->
 			</div>
-			<div class="copyright">Copyright© MakinaRocks 2022. All Rights Reserved.</div>
+			<div style="display: flex; flex-direction: row; gap: 20px; justify-content: center;">
+				<div class="copyright">Copyright© MakinaRocks 2022. All Rights Reserved.</div>
+				<div class="copyright" style="cursor: pointer"
+					onclick='window.open("https://www.makinarocks.ai/en/terms/", "_blank")'>End-User License Agreement</div>
+				<div class="copyright" style="cursor: pointer"
+					onclick='window.open("https://www.makinarocks.ai/en/privacy-policy/", "_blank")'>Privacy Policy</div>
+			</div>
 	</footer>
 	<script>
 		var onloadCallback = function () {

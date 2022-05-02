@@ -8,8 +8,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 	<link rel="stylesheet" href="css/style1.css">
 	<link rel="stylesheet" href="css/download.css">
-	<link rel="icon" href="./images/lgoo_mini.svg">
-
+	<link rel="stylesheet" href="css/thanks.css">
 	<title>MakinaRock Link</title>
 </head>
 
@@ -28,7 +27,7 @@
 						Download
 					</li>
 					<li class="navbar__menu__item" data-target="documentation">
-						Documentation
+						<a href="https://makinarocks.gitbook.io/link/" target="blank">Documentation</a>
 					</li>
 					<button class="get_button">Get Started for Free</button>
 				</ul>
@@ -38,18 +37,65 @@
 			</div>
 		</div>
 	</nav>
-	<section class="start2">
-		<div class="container">
-			<div class="email_img">
-				<img src="images/email_icon.svg" alt="">
+	<section class="thanks">
+		<div class="thanks_container">
+			<div class="thanks_img">
+				<div class="main_thanks">
+					<img src="images/download.svg" alt="">
+				</div>
+				<img class="circle_ani" src="images/circle_ani.svg" alt="">
 			</div>
 			<div class="text_container">
-				<div class="title">Check your email.</div>
+				<div class="title">Thanks for downloading</div>
 				<div class="sub_title">Your application is successfully completed.</div>
 			</div>
-			<div class="button_container">
-				<button onclick="window.location.href='index.html'" class="border_button">Home</button>
-				<button class="okay_button" id="download_button">Download Link</button>
+			<div class="thanks_card_container">
+				<div class="thanks_card install_card">
+					<a href="https://makinarocks.gitbook.io/link/getting_started/installation" target="_blank">
+						<div class="thanks_text_container">
+							<div class="thanks_card_title">How to Install</div>
+							<div class="thanks_card_desc">Learn how to install Link</div>
+						</div>
+						<div class="thanks_img">
+							<img src="images/thanks_card1.svg" alt="">
+						</div>
+						<div class="read_more">
+							<button>Read more</button>
+							<img src="images/read_more_icon.svg" alt="">
+						</div>
+					</a>
+				</div>
+				<div class="thanks_card key_feature_card">
+					<a href="https://makinarocks.gitbook.io/link/keyfeatures" target="_blank">
+						<div class="thanks_text_container">
+							<div class="thanks_card_title">Key Features</div>
+							<div class="thanks_card_desc">Discover the key features of Link</div>
+						</div>
+						<div class="thanks_img">
+							<img src="images/thanks_card2.svg" alt="">
+						</div>
+						<div class="read_more">
+							<button>Read more</button>
+							<img src="images/read_more_icon.svg" alt="">
+						</div>
+					</a>
+				</div>
+				<div class="thanks_card tutorial_card">
+					<a href="https://makinarocks.gitbook.io/link/tutorial/follow-the-example" target="_blank">
+						<div class="thanks_text_container">
+							<div class="thanks_card_title">Tutorial</div>
+							<div class="thanks_card_desc">Follow the steps and
+								learn how to make pipelines</div>
+						</div>
+						<div class="thanks_img">
+							<img src="images/thanks_card3.svg" alt="">
+						</div>
+						<div class="read_more">
+							<button>Read more</button>
+							<img src="images/read_more_icon.svg" alt="">
+						</div>
+					</a>
+				</div>
 			</div>
 			<!-- <div class="no_email_container">
 				<div class="no_email_desc">Still can’t fine the email?<br>
@@ -121,10 +167,6 @@
 	</footer>
 	<script src="js/navbar.js" defer></script>
 	<script src="js/start2.js" defer></script>
-	<script type="module">
-		import MRXAnalytics from '/js/analytics.js';
-		MRXAnalytics.screenView('StartFormConfirm');
-	</script>
 </body>
 </body>
 
