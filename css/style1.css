@@ -507,6 +507,11 @@ p{
 .icon_flex_div li img{height:2rem;}
 .run_on{display: flex;gap:12px;align-items: center;}
 .run_on .title{font-size:14px;font-weight:700;margin-bottom:6px;}
+.copylight_container{display: flex; flex-direction: row; gap: 20px; justify-content: center;}
+.copylight_wrap{width:106rem;display: flex;margin: 0 auto;padding:0 0 4rem;justify-content: space-between;}
+.policy_container{display: flex;gap:4rem;}
+.copyright{border:none;font-size:1.4rem;font-weight: 700;}
+.copyright_text{color: var(--color_black_desc);font-size:1.2rem;font-weight: 400;}
 @media screen and (max-width: 1000px) {
   body{overflow-x: hidden;min-height:100%;}
 
@@ -709,5 +714,7 @@ p{
 .footer_flex{gap:2rem;margin-bottom:4rem;}
 #contact > div{width: 100%;padding:2rem;box-sizing: border-box;}
 .get_button,.youtube_button{width:50%;justify-content: center;}
-
+.footer_flex{gap:2rem;margin-bottom:4rem;}
+.copylight_wrap{flex-direction: column; width:92%;gap:2rem;}
+.copyright_text{text-align: left;}
 }
