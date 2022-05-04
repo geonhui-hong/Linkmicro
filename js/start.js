@@ -34,9 +34,13 @@ const organization_error_field = document.querySelector('#organization_error_fie
 if (submit_button) {
 	submit_button.addEventListener('click', () => {
 		let isEnable = true;
-		// || grecaptcha.getResponse().length === 0
-		if (!form || !isEnableSubmit) return;
+		if (!form || !isEnableSubmit || grecaptcha.getResponse().length === 0) return;
 		try {
+			fname_error_field.style.visibility = 'hidden';
+			lname_error_field.style.visibility = 'hidden';
+			email_error_field.style.visibility = 'hidden';
+			organization_error_field.style.visibility = 'hidden';
+
 			const formData = new FormData(form);
 			if (formData.has('fname') && formData.get('fname').length === 0) {
 				fname_error_field.textContent = 'Required';

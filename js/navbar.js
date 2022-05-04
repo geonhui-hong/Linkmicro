@@ -42,6 +42,8 @@ navbarMenu.addEventListener('click', (event) => {
 				menu.classList.toggle('active');
 				// document.body.classList.toggle('hambuger_overflow')
 				toggleBtn.classList.toggle('open');
+			} else {
+				window.location.href = './index.html'
 			}
 		} else if (target.dataset.target === 'download') {
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -50,10 +52,14 @@ navbarMenu.addEventListener('click', (event) => {
 				window.location.href = `./${target.dataset.target}.html`;
 			}
 		}
-		else {
+		else if (target.dataset.target === 'documentation') {
 			window.open('https://makinarocks.gitbook.io/link/', '_blank');
 
 			if (window.MRXAnalytics) MRXAnalytics.sendEvent("linkDoc");
+		} else if (target.dataset.target === 'pricing') {
+			window.location.href = `./pricing.html`;
+		} else if (target.dataset.target === 'support') {
+			window.location.href = `./support.html`;
 		}
 	}
 });
