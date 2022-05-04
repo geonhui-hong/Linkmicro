@@ -44,18 +44,19 @@
 			</div>
 		</div>
 	</nav>
-	<section class="start_for_free">
-		<form id="start_form" class="start_input_container">
-			<div class="start_wrap">
-				<div class="link_character">
-					<img src="images/link_character.svg" alt="">
+	<section class="subpage_container">
+		<form id="start_form" class="subpage_form_container">
+			<div class="subpage_wrap">
+				<div class="subpage_main_visual">
+					<img src="images/tech_support.svg" alt="">
 				</div>
-				<div class="start_input">
+				<div class="subpage_input_container">
 					<div class="text_container">
-						<div class="title">Get started with Link</div>
-						<div class="sub_title">To start Link for free, please fill out the contents below.</div>
+						<div class="subpage_title">Technical Support​​</div>
+						<div class="subpage_sub_title">
+                            Please leave a technical issue or feedback about Link​​</div>
 					</div>
-					<div class="input_container">
+					<div class="subpage_input_wrap">
 						<div class="name_container">
 							<div class="name_input_contatier">
 								<div class="input_title">First name *</div>
@@ -68,36 +69,51 @@
 								<div class="invalid_text" id="lname_error_field">{last name} is invalid</div>
 							</div>
 						</div>
-						<div class="email_container">
-							<div class="input_title">Email *</div>
-							<input type="text" id="email" name="email">
-							<div class="invalid_text" id="email_error_field">Email is invalid</div>
-						</div>
-						<div class="job_title_container">
-							<div class="input_title">Job title *</div>
-							<select name="job" id="job">
-								<option value="Data_Analyst">Data Analyst</option>
-								<option value="Data_Engineer">Data Engineer</option>
-								<option value="Data_Scientist">Data Scientist</option>
-								<option value="DevOps_Engineer">DevOps Engineer</option>
-								<option value="ML_Engineer">ML Engineer</option>
-								<option value="MLOps_Engineer">MLOps Engineer</option>
-								<option value="S/W_Engineer">S/W Engineer</option>
-								<option value="System_Engineer">System Engineer</option>
-								<option value="Marketing_Manager">Marketing Manager</option>
-								<option value="Sales_Manager">Sales Manager</option>
-								<option value="Product_Manager">Product Manager</option>
-								<option value="Student">Student</option>
-								<option value="other">Other</option>
-							</select>
-						</div>
-						<div class="organaization_container">
-							<div class="input_title">Organization *<span class="organaization_example">(e.g company, university or
-									lab)</span>
+                        <div class="name_container">
+							<div class="name_input_contatier">
+                                <div class="input_title">Email *</div>
+                                <input type="text" id="email" name="email">
+                                <div class="invalid_text" id="email_error_field">Email is invalid</div>
+                            </div>
+							<div class="name_input_contatier">
+								<div class="input_title">Link Version​ *</div>
+								<select class="selectbox" name="link_version" id="link_version">
+                                    <option value="link_version_0.6.1">0.6.1</option>
+                                </select>
+                                <div class="invalid_text"></div>
 							</div>
-							<input type="text" id="organization" name="organization">
-							<div class="invalid_text" id="organization_error_field">Email is invalid</div>
 						</div>
+                        <div class="name_container">
+							<div class="name_input_contatier">
+                                <div class="input_title">OS *</div>
+                                <select class="selectbox" name="link_version" id="link_version">
+                                    <option value="windows">Windows</option>
+                                    <option value="macos_intel">macOS(Intel)</option>
+                                    <option value="macos_apple_silicon">macOS(Apple Silicon)</option>
+                                    <option value="linux">Linux</option>
+                                </select>
+                                <div class="invalid_text"></div>
+                            </div>
+							<div class="name_input_contatier">
+								<div class="input_title">Python version *</div>
+                                <select class="selectbox" name="python_version" id="python_version">
+                                    <option value="python_version_3.6">3.6</option>
+                                    <option value="python_version_3.7">3.7</option>
+                                    <option value="python_version_3.8">3.8</option>
+                                    <option value="python_version_3.9">3.9</option>
+                                </select>
+                                <div class="invalid_text"></div>
+							</div>
+						</div>
+                        <div class="textarea_container">
+                            <div class="input_title">Description *</div>
+                            <textarea></textarea>
+                            <div class="invalid_text" id="email_error_field">Email is invalid</div>
+                        </div>
+                        <div class="add_file_button_container">
+                            여기다가 넣으시면 될꺼 같습니다.
+                            <div>For attachments over 20MB use upload service​</div>
+                        </div>
 					</div>
 					<div class="check_container_p">
 						<div class="start_check_container">
@@ -121,7 +137,7 @@
 					</div>
 					<div class="button_container">
 						<!-- onclick="window.location.href='start2.html'" -->
-						<button class="okay_button" id="submit">Submit</button>
+						<button class="okay_button width100" id="submit">Submit</button>
 					</div>
 				</div>
 			</div>
