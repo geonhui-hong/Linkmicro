@@ -201,7 +201,7 @@ function fileListItemTemplate(fileName, index) {
 			<div>
 				${fileName}
 			</div>
-			<div class='delete_button' data-index=${index}>X</div> 			
+			<div class='delete_button' data-index=${index} style="cursor: pointer">X</div> 			
 		</div>
 		`
 }
