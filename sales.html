@@ -52,7 +52,7 @@
 		</div>
 	</nav>
 	<section class="subpage_container">
-		<form id="start_form" class="subpage_form_container">
+		<form id="talk_to_business_form" class="subpage_form_container">
 			<div class="subpage_wrap">
 				<div class="subpage_main_visual">
 					<img src="images/sales_support.svg" alt="">
@@ -84,26 +84,26 @@
 							</div>
 							<div class="name_input_contatier">
 								<div class="input_title">Phone number (optional)​</div>
-								<input type="text" id="lname" name="lname">
-								<div class="invalid_text"></div>
+								<input type="text" id="phone_number" name="phone_number">
+								<div class="invalid_text" id="phone_number_error_field"></div>
 							</div>
 						</div>
 						<div class="name_container">
 							<div class="name_input_contatier">
 								<div class="input_title">Company＊</div>
-								<input type="text" id="email" name="email">
-								<div class="invalid_text" id="email_error_field">Email is invalid</div>
+								<input type="text" id="company" name="company">
+								<div class="invalid_text" id="company_error_field">Email is invalid</div>
 							</div>
 							<div class="name_input_contatier">
 								<div class="input_title">Business (optional)​</div>
-								<input type="text" id="lname" name="lname">
-								<div class="invalid_text"></div>
+								<input type="text" id="business" name="business">
+								<div class="invalid_text" id="business_error_field"></div>
 							</div>
 						</div>
 						<div class="textarea_container">
 							<div class="input_title">Message *</div>
-							<textarea></textarea>
-							<div class="invalid_text" id="email_error_field">Email is invalid</div>
+							<textarea id="message" name="message"></textarea>
+							<div class="invalid_text" id="message_error_field">Email is invalid</div>
 						</div>
 					</div>
 					<div class="check_container_p">
@@ -226,7 +226,7 @@
 	</script>
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 	<script src="./js/navbar.js" defer></script>
-	<script src="./js/start.js" defer></script>
+	<script src="./js/sales.js" defer></script>
 	<script type="module">
 		import MRXAnalytics from '/js/analytics.js';
 		MRXAnalytics.screenView('StartForm');

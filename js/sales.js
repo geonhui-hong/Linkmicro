@@ -1,52 +1,13 @@
 /**
- * 전역 변수
- */
-let isEnableSubmit = false;
-
-const url = new URL(window.location.href);
-const os = url.searchParams.get('os');
-const py_ver = url.searchParams.get('pythonVersion');
-const link_ver = url.searchParams.get('linkVersion');
-const arch = url.searchParams.get('arch');
-console.log("======= QUERY PARAMS ==============")
-console.log(os)
-console.log(py_ver)
-console.log(link_ver)
-console.log(arch);
-console.log("===================================")
-
-let os_value = null;
-if (os === 'windows') {
-	os_value = 'window';
-} else if (os === 'linux') {
-	os_value = os;
-} else if (os === 'mac' && arch === 'x86_64') {
-	os_value = 'apple_intel';
-} else if (os === 'mac' && arch === 'arm64') {
-	os_value = 'apple_silicon';
-}
-
-const py_ver_opt = document.querySelector(`[value="${py_ver}"]`);
-if (py_ver_opt) {
-	py_ver_opt.selected = true;
-}
-const link_ver_opt = document.querySelector(`[value="${link_ver}"]`)
-if (link_ver_opt) {
-	link_ver_opt.selected = true;
-}
-const os_opt = document.querySelector(`[value="${os_value}"]`);
-if (os_opt) {
-	os_opt.selected = true;
-}
-
-/**
  * 에러 필드 
  */
 const fname_error_field = document.querySelector('#fname_error_field');
 const lname_error_field = document.querySelector('#lname_error_field');
 const email_error_field = document.querySelector('#email_error_field');
-const description_error_field = document.querySelector('#description_error_field');
-
+const phone_number_error_field = document.querySelector('#phone_number_error_field');
+const company_error_field = document.querySelector('#company_error_field');
+const business_error_field = document.querySelector('#business_error_field');
+const message_error_field = document.querySelector('#message_error_field');
 /**
  * 폼
  */
@@ -54,30 +15,31 @@ const submit_button = document.querySelector('#submit');
 if (submit_button) {
 	submit_button.style.backgroundColor = '#e0e0e0';
 }
-const form = document.querySelector('#technical_support_form');
+const form = document.querySelector('#talk_to_business_form');
 if (form) {
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
 	})
 }
+
 /**
  * 프라이버시 동의 
  */
-const privacy_policy_checkbox = document.querySelector('#agreement_private_policy');
-if (privacy_policy_checkbox) {
-	privacy_policy_checkbox.addEventListener('change', (e) => {
-		if (e.target.checked) {
-			submit_button.style.backgroundColor = '#6C79F9';
-			isEnableSubmit = true;
-		} else {
-			submit_button.style.backgroundColor = '#e0e0e0';
-			isEnableSubmit = false;
-		}
+ const privacy_policy_checkbox = document.querySelector('#agreement_private_policy');
+ if (privacy_policy_checkbox) {
+   privacy_policy_checkbox.addEventListener('change', (e) => {
+     if (e.target.checked) {
+       submit_button.style.backgroundColor = '#6C79F9';
+       isEnableSubmit = true;
+     } else {
+       submit_button.style.backgroundColor = '#e0e0e0';
+       isEnableSubmit = false;
+     }
+ 
+   })
+ }
 
-	})
-}
-
-if (submit_button) {
+ if (submit_button) {
 	submit_button.addEventListener('click', () => {
 		let isEnable = true;
 		// || grecaptcha.getResponse().length === 0
@@ -86,7 +48,10 @@ if (submit_button) {
 			fname_error_field.style.visibility = 'hidden';
 			lname_error_field.style.visibility = 'hidden';
 			email_error_field.style.visibility = 'hidden';
-			description_error_field.style.visibility = 'hidden';
+			phone_number_error_field.style.visibility = 'hidden';
+			company_error_field.style.visibility = 'hidden';
+			business_error_field.style.visibility = 'hidden';
+      message_error_field.style.visibility = 'hidden';
 
 			const formData = new FormData(form);
 			if (formData.has('fname') && formData.get('fname').length === 0) {
@@ -126,9 +91,32 @@ if (submit_button) {
 				throw new Error('not allowed value in email');
 			}
 
-			if (formData.has('description') && formData.get('description').length === 0) {
-				description_error_field.textContent = 'Required';
-				description_error_field.style.visibility = 'visible'
+			if (formData.has('phone_number') && formData.get('phone_number').length === 0) {
+				phone_number_error_field.textContent = 'Required';
+				phone_number_error_field.style.visibility = 'visible'
+				throw new Error('description has required');
+			}
+
+      if (formData.has('phone_number') && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(formData.get('phone_number'))) {
+				phone_number_error_field.textContent = 'Invalid';
+				phone_number_error_field.style.visibility = 'visible'
+				throw new Error('description has required');
+			}
+
+      if (formData.has('company') && formData.get('company').length === 0) {
+				company_error_field.textContent = 'Required';
+				company_error_field.style.visibility = 'visible';
+				throw new Error('first name has required');
+			}
+			if (formData.has('company') && (/([^가-힣A-Za-z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\s\x20])/i
+				.test(formData.get('company')) || /[!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\"\'\,\.\/\`\₩]/g.test(formData.get('company')))) {
+          company_error_field.textContent = 'Invalid';
+          company_error_field.style.visibility = 'visible';
+				throw new Error('not allowed value in first name');
+			}
+      if (formData.has('message') && formData.get('message').length === 0) {
+				message_error_field.textContent = 'Required';
+				message_error_field.style.visibility = 'visible'
 				throw new Error('description has required');
 			}
 		} catch (e) {
@@ -183,88 +171,14 @@ if (submit_button) {
           first_name: obj.fname.trim(),
           last_name: obj.lname.trim(),
           email: obj.email.trim(),
-          description: obj.description.trim()
+          phone_number: obj.phone_number.trim(),
+          company: obj.company.trim(),
+          business: obj.business.trim(),
+          message: obj.message.trim()
         })
 			} catch (e) {
 				console.log(e)
 			}
 		}
-	})
-}
-
-let uploaded = [];
-const drop_zone = document.querySelector('#drop_zone');
-const file_list = document.querySelector('#file_list');
-function fileListItemTemplate(fileName, index) {
-	return `
-		<div style="display: flex; gap: 10px;">
-			<div>
-				${fileName}
-			</div>
-			<div class='delete_button' data-index=${index}>X</div> 			
-		</div>
-		`
-}
-function dropHandler(ev) {
-	console.log('File(s) dropped');
-
-	// Prevent default behavior (Prevent file from being opened)
-	ev.preventDefault();
-
-	if (ev.dataTransfer.items) {
-		// Use DataTransferItemList interface to access the file(s)
-		for (var i = 0; i < ev.dataTransfer.items.length; i++) {
-			// If dropped items aren't files, reject them
-			if (ev.dataTransfer.items[i].kind === 'file') {
-				var file = ev.dataTransfer.items[i].getAsFile();
-				console.log(file);
-				uploaded.push(file);
-				console.log('... file[' + i + '].name = ' + file.name);
-			}
-		}
-	} else {
-		// Use DataTransfer interface to access the file(s)
-		for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-			console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-			console.log(file);
-			uploaded.push(ev.dataTransfer.files[i]);
-		}
-	}
-	file_list.innerHTML = uploaded.reduce((acc, curr, i) => {
-		return acc + fileListItemTemplate(curr.name, i);
-	}, '')
-}
-
-function dragOverHandler(ev) {
-	console.log('File(s) in drop zone');
-
-	// Prevent default behavior (Prevent file from being opened)
-	ev.preventDefault();
-}
-
-function clickHandler(ev) {
-	if (Array.from(ev.target.classList).includes('delete_button')) {
-		const index = parseInt(ev.target.dataset.index);
-		uploaded = uploaded.filter((d, i) => index !== i)
-
-		file_list.innerHTML = uploaded.reduce((acc, curr, i) => {
-			return acc + fileListItemTemplate(curr.name, i);
-		}, '')
-	}
-}
-
-function dragAreaClickHandler(ev) {
-	const input = document.createElement('input');
-	input.type = 'file';
-	input.style.visibility = 'hidden';
-	document.body.append(input);
-	input.click();
-	input.addEventListener('change', (e) => {
-		const file = e.target.files[0];
-		uploaded.push(file);
-		file_list.innerHTML = uploaded.reduce((acc, curr, i) => {
-			return acc + fileListItemTemplate(curr.name, i);
-		}, '')
-		input.remove();
 	})
 }

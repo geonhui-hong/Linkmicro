@@ -128,6 +128,9 @@ submit_button.addEventListener('click', async () => {
 		try {
 			if (window.MRXAnalytics) MRXAnalytics.sendEvent("linkDownload");
 
+      email_error_filed.style.visibility = 'hidden';
+			product_key_error_field.style.visibility = 'hidden';
+
 			const obj = Object.fromEntries(new FormData(form));
 			let os = '';
 			let arch = '';
@@ -150,9 +153,7 @@ submit_button.addEventListener('click', async () => {
 			const headers = {
 				'Content-Type': 'application/json',
 				withCredentials: true,
-			};
-			email_error_filed.style.visibility = 'hidden';
-			product_key_error_field.style.visibility = 'hidden';
+			};			
 
 			const response = await axios.post(apiPrefix + '/api/v1/download/help/download', JSON.stringify({
 				member_email: obj.email.trim(),
