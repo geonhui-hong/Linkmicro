@@ -37,10 +37,10 @@
 						Documentation
 					</li>
 					<li class="navbar__menu__item" data-target="pricing">
-						pricing
+						Pricing
 					</li>
 					<li class="navbar__menu__item" data-target="support">
-						support
+						Support
 						</a>
 					</li>
 					<button class="get_button">Get Started for Free</button>
@@ -216,12 +216,12 @@
 						<div class='footer_title'>Support</div>
 						<div class='footer_contents'>
 							<div>
-								<a href='sales.html'> Talk to sales
+								<a href='sales.html'> Talk to Sales
 								</a>
 							</div>
 							<div>
 								<a href='technical_support.html'>
-									Technical support
+									Technical Support
 								</a>
 							</div>
 						</div>
@@ -243,10 +243,15 @@
 	<script>
 		var onloadCallback = function () {
 			grecaptcha.render('html_element', {
-				'sitekey': '6LfO-6AfAAAAAOxhqZVOUocyne3LF8n6LjS9ZMqq'
+				'sitekey': '6LfO-6AfAAAAAOxhqZVOUocyne3LF8n6LjS9ZMqq',
+				'callback': captchaCallback,
+				// '6LfO-6AfAAAAAOxhqZVOUocyne3LF8n6LjS9ZMqq'
 			});
 		};
 	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+		integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 	<script src="./js/navbar.js" defer></script>
 	<script src="./js/technical_support.js" defer></script>

@@ -37,10 +37,10 @@
 						Documentation
 					</li>
 					<li class="navbar__menu__item" data-target="pricing">
-						pricing
+						Pricing
 					</li>
 					<li class="navbar__menu__item" data-target="support">
-						support
+						Support
 						</a>
 					</li>
 					<button class="get_button">Get Started for Free</button>
@@ -61,7 +61,7 @@
 					<div class="text_container">
 						<div class="subpage_title">Talk to Sales​</div>
 						<div class="subpage_sub_title">
-							Fill out this form with your information<br> We’ll get back to you shortly.​</div>
+							Fill out the form with your information.<br> We’ll get back to you shortly.​</div>
 					</div>
 					<div class="subpage_input_wrap">
 						<div class="name_container">
@@ -113,13 +113,6 @@
 								(Required) I have read and fully agree to <a href="https://www.makinarocks.ai/en/terms/"
 									target="_blank">end-user license agreement </a> and <a
 									href="https://www.makinarocks.ai/en/privacy-policy/" target="_blank">privacy policy.</a>
-							</label>
-						</div>
-						<div class="start_check_container">
-							<input type="checkbox" id="agreement_marketing_policy" name="agreement_marketing_policy">
-							<label class="label_for_check" for="agreement_marketing_policy">
-								(Optional) I agree to receive <a href="https://www.makinarocks.ai/en/privacy-policy/"
-									target="_blank">promotion and marketing information</a> related to MakinaRocks.
 							</label>
 						</div>
 					</div>
@@ -193,12 +186,12 @@
 						<div class='footer_title'>Support</div>
 						<div class='footer_contents'>
 							<div>
-								<a href='sales.html'> Talk to sales
+								<a href='sales.html'> Talk to Sales
 								</a>
 							</div>
 							<div>
 								<a href='technical_support.html'>
-									Technical support
+									Technical Support
 								</a>
 							</div>
 						</div>
@@ -220,13 +213,15 @@
 	<script>
 		var onloadCallback = function () {
 			grecaptcha.render('html_element', {
-				'sitekey': '6LfO-6AfAAAAAOxhqZVOUocyne3LF8n6LjS9ZMqq'
+				'sitekey': '6LfO-6AfAAAAAOxhqZVOUocyne3LF8n6LjS9ZMqq',
+				'callback': captchaCallback,
 			});
 		};
 	</script>
-	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.1/axios.min.js" defer></script>
 	<script src="./js/navbar.js" defer></script>
 	<script src="./js/sales.js" defer></script>
+	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" defer></script>
 	<script type="module">
 		import MRXAnalytics from '/js/analytics.js';
 		MRXAnalytics.screenView('StartForm');

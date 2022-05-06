@@ -31,6 +31,83 @@ const lname_error_field = document.querySelector('#lname_error_field');
 const email_error_field = document.querySelector('#email_error_field');
 const organization_error_field = document.querySelector('#organization_error_field');
 
+
+let formDebouncingID = 0;
+form.addEventListener('keydown', (evt) => {
+	console.log(evt);
+	if (formDebouncingID) clearTimeout(formDebouncingID);
+	setTimeout(() => {
+		const value = evt.target.value;
+		if (evt.target.id === 'fname') {
+			if (value.length === 0) {
+				fname_error_field.textContent = 'Required';
+				fname_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			} else if (/([^가-힣A-Za-z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\s\x20])/i
+				.test(value)) {
+				fname_error_field.textContent = 'Invalid';
+				fname_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			}
+			else {
+				fname_error_field.style.visibility = 'hidden';
+			}
+		}
+		if (evt.target.id === 'lname') {
+			if (value.length === 0) {
+				lname_error_field.textContent = 'Required';
+				lname_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			} else if (/([^가-힣A-Za-z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\s\x20])/i
+				.test(value)) {
+				lname_error_field.textContent = 'Invalid';
+				lname_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			}
+			else {
+				lname_error_field.style.visibility = 'hidden';
+			}
+		}
+		if (evt.target.id === 'email') {
+			if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) || (value.length < 5 && value.length > 0)) {
+				email_error_field.textContent = 'Invalid';
+				email_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			} else if (value.length === 0) {
+				email_error_field.textContent = 'Required';
+				email_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			} else {
+				email_error_field.style.visibility = 'hidden';
+			}
+		}
+		if (evt.target.id === 'organization') {
+			if (/([^가-힣A-Za-z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\s\x20])/i.test(value)) {
+				organization_error_field.textContent = 'Invalid';
+				organization_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			} else if (value.length === 0) {
+				organization_error_field.textContent = 'Required';
+				organization_error_field.style.visibility = 'visible';
+				isEnableSubmit = false;
+				return;
+			} else {
+				organization_error_field.style.visibility = 'hidden';
+			}
+		}
+		formDebouncingID = null;
+		isEnableSubmit = true;
+	}, 200)
+
+
+})
 if (submit_button) {
 	submit_button.addEventListener('click', () => {
 		let isEnable = true;
@@ -45,51 +122,51 @@ if (submit_button) {
 			if (formData.has('fname') && formData.get('fname').length === 0) {
 				fname_error_field.textContent = 'Required';
 				fname_error_field.style.visibility = 'visible';
-				throw new Error('first name has required');
+				isEnable = false;
 			}
 			if (formData.has('fname') && (/([^가-힣A-Za-z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\s\x20])/i
 				.test(formData.get('fname')) || /[!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\"\'\,\.\/\`\₩]/g.test(formData.get('fname')))) {
 				fname_error_field.textContent = 'Invalid';
 				fname_error_field.style.visibility = 'visible';
-				throw new Error('not allowed value in first name');
+				isEnable = false;
 			}
 
 			if (formData.has('lname') && formData.get('lname').length === 0) {
 				lname_error_field.textContent = 'required';
 				lname_error_field.style.visibility = 'visible'
-				throw new Error('last name has required');
+				isEnable = false;
 			}
 
 			if (formData.has('lname') && (/([^가-힣A-Za-z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\s\x20])/i
 				.test(formData.get('lname')) || /[!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\"\'\,\.\/\`\₩]/g.test(formData.get('lname')))) {
 				lname_error_field.textContent = 'Invalid';
 				lname_error_field.style.visibility = 'visible';
-				throw new Error('not allowed value in last name');
+				isEnable = false;
 			}
 
 			if (formData.has('email') && formData.get('email').length === 0) {
 				email_error_field.textContent = 'Required';
 				email_error_field.style.visibility = 'visible';
-				throw new Error('last name has required');
+				isEnable = false;
 			}
 
 			if (formData.has('email') && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.get('email')) || formData.get('email').length < 5) {
 				email_error_field.textContent = 'Invalid';
 				email_error_field.style.visibility = 'visible';
-				throw new Error('not allowed value in email');
+				isEnable = false;
 			}
 
 			if (formData.has('organization') && formData.get('organization').length === 0) {
 				organization_error_field.textContent = 'Required';
 				organization_error_field.style.visibility = 'visible'
-				throw new Error('organization has required');
+				isEnable = false;
 			}
 
 			if (formData.has('organization') && /([^가-힣A-Za-z0-9\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"\s\x20])/i
 				.test(formData.get('organization'))) {
 				organization_error_field.textContent = 'Invalid';
 				organization_error_field.style.visibility = 'visible';
-				throw new Error('not allowed value in organization');
+				isEnable = false;
 			}
 		} catch (e) {
 			console.log(e.message)
@@ -145,16 +222,29 @@ if (submit_button) {
 	})
 }
 
+
 const privacy_policy_checkbox = document.querySelector('#agreement_private_policy');
 if (privacy_policy_checkbox) {
 	privacy_policy_checkbox.addEventListener('change', (e) => {
 		if (e.target.checked) {
-			submit_button.style.backgroundColor = '#6C79F9';
-			isEnableSubmit = true;
+			if (captchaChecked) {
+				submit_button.style.backgroundColor = '#6C79F9';
+				isEnableSubmit = true;
+			}
 		} else {
 			submit_button.style.backgroundColor = '#e0e0e0';
 			isEnableSubmit = false;
 		}
-
 	})
+}
+let captchaChecked = false;
+const captchaCallback = () => {
+	captchaChecked = true;
+	if (privacy_policy_checkbox.checked) {
+		submit_button.style.backgroundColor = '#6C79F9';
+		isEnableSubmit = true;
+	} else {
+		submit_button.style.backgroundColor = '#e0e0e0';
+		isEnableSubmit = false;
+	}
 }

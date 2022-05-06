@@ -14,8 +14,8 @@ if (url.includes('pqxzhparpcft-help-web-dev.link.makinarocks.ai') || url.include
 /**
 * 에러 필드
 */
-const email_error_filed = document.querySelector('#email_error_field');
-const product_key_error_field = document.querySelector('#product_key_error_field');
+// const email_error_filed = document.querySelector('#email_error_field');
+// const product_key_error_field = document.querySelector('#product_key_error_field');
 
 const download_option_form = document.querySelector('#download_option_form');
 if (download_option_form) {
@@ -67,50 +67,50 @@ Array.from(versionRadios).forEach((el) => {
 	 * 폼
 	 */
 const submit_button = document.querySelector('#submit');
-if (submit_button) {
-	submit_button.style.backgroundColor = '#e0e0e0';
-}
-const form = document.querySelector('#download_form');
-if (form) {
-	form.addEventListener('submit', (e) => {
-		e.preventDefault();
-	})
-}
+// if (submit_button) {
+// 	submit_button.style.backgroundColor = '#e0e0e0';
+// }
+// const form = document.querySelector('#download_form');
+// if (form) {
+// 	form.addEventListener('submit', (e) => {
+// 		e.preventDefault();
+// 	})
+// }
 
 /**
  * 엘리먼트
  */
-const emailInputTag = document.querySelector('#email');
-let emailInputDebouncingID = 0;
-const productKeyInputTag = document.querySelector('#product_key');
-let productKeyInputDebouncingID = 0;
-emailInputTag.addEventListener('keydown', (event) => {
-	if (emailInputDebouncingID) clearTimeout(emailInputDebouncingID);
-	emailInputDebouncingID = setTimeout(() => {
-		checkIsEnableSubmit();
-		emailInputDebouncingID = null;
-	}, 300);
-})
+// const emailInputTag = document.querySelector('#email');
+// let emailInputDebouncingID = 0;
+// const productKeyInputTag = document.querySelector('#product_key');
+// let productKeyInputDebouncingID = 0;
+// emailInputTag.addEventListener('keydown', (event) => {
+// 	if (emailInputDebouncingID) clearTimeout(emailInputDebouncingID);
+// 	emailInputDebouncingID = setTimeout(() => {
+// 		checkIsEnableSubmit();
+// 		emailInputDebouncingID = null;
+// 	}, 300);
+// })
 
-productKeyInputTag.addEventListener('keydown', (event) => {
-	if (productKeyInputDebouncingID) clearTimeout(productKeyInputDebouncingID);
-	productKeyInputDebouncingID = setTimeout(() => {
-		checkIsEnableSubmit();
-		productKeyInputDebouncingID = null;
-	}, 300);
-})
+// productKeyInputTag.addEventListener('keydown', (event) => {
+// 	if (productKeyInputDebouncingID) clearTimeout(productKeyInputDebouncingID);
+// 	productKeyInputDebouncingID = setTimeout(() => {
+// 		checkIsEnableSubmit();
+// 		productKeyInputDebouncingID = null;
+// 	}, 300);
+// })
 
-const checkIsEnableSubmit = () => {
-	if (emailInputTag.value.length > 0 && productKeyInputTag.value.length > 0) {
-		submit_button.style.backgroundColor = '#6C79F9';
-		isEnableSubmit = true;
-	} else {
-		submit_button.style.backgroundColor = '#e0e0e0';
-		isEnableSubmit = false;
-	}
-}
-
-submit_button.addEventListener('click', async () => {
+// const checkIsEnableSubmit = () => {
+// 	if (emailInputTag.value.length > 0 && productKeyInputTag.value.length > 0) {
+// 		submit_button.style.backgroundColor = '#6C79F9';
+// 		isEnableSubmit = true;
+// 	} else {
+// 		submit_button.style.backgroundColor = '#e0e0e0';
+// 		isEnableSubmit = false;
+// 	}
+// }
+/**
+ submit_button.addEventListener('click', async () => {
 	if (!isEnableSubmit || !form) return;
 	let isEnable = true;
 	try {
@@ -128,7 +128,7 @@ submit_button.addEventListener('click', async () => {
 		try {
 			if (window.MRXAnalytics) MRXAnalytics.sendEvent("linkDownload");
 
-      email_error_filed.style.visibility = 'hidden';
+			email_error_filed.style.visibility = 'hidden';
 			product_key_error_field.style.visibility = 'hidden';
 
 			const obj = Object.fromEntries(new FormData(form));
@@ -206,6 +206,85 @@ submit_button.addEventListener('click', async () => {
 			}
 
 		}
+	}
+})
+ */
+submit_button.addEventListener('click', async () => {
+	try {
+		if (window.MRXAnalytics) MRXAnalytics.sendEvent("linkDownload");
+
+		let os = '';
+		let arch = '';
+		const operation_system = document.querySelector('input[name="operation_system"]:checked').value
+		if (operation_system === "apple_silicon") {
+			os = 'mac';
+			arch = 'arm64'
+		} else if (operation_system === 'apple_intel') {
+			os = 'mac';
+			arch = 'x86_64';
+		} else if (operation_system === 'linux') {
+			os = 'linux';
+			arch = 'x86_64';
+		} else {
+			os = 'windows';
+			arch = 'x86_64';
+		}
+
+		let version = await getLatestVersion(obj.email, obj.product_key)
+
+		const headers = {
+			'Content-Type': 'application/json',
+			withCredentials: true,
+		};
+
+		const response = await axios.post(apiPrefix + '/api/v1/download/help/download', JSON.stringify({
+			product_type: document.querySelector('input[name="product_type"]:checked').value,
+			py_ver: document.querySelector('input[name="python_version"]:checked').value,
+			arch: arch,
+			os: os,
+			link_ver: version
+		}), {
+			headers,
+			responseEncoding: 'binary',
+			responseType: 'arraybuffer',
+		});
+
+		const temp = document.createElement('a');
+		const blob = new Blob([response.data], {
+			type: response.headers['content-type'],
+		});
+		temp.setAttribute('href', URL.createObjectURL(blob));
+
+		temp.setAttribute(
+			'download',
+			response.headers['content-disposition']
+				.split('filename=')[1]
+				.replaceAll('"', ''),
+		);
+		document.body.appendChild(temp);
+		temp.click();
+		document.body.removeChild(temp);
+
+		const modalBackground = document.querySelector('.jquery-modal')
+		modalBackground.dispatchEvent(new Event('click'))
+		window.location.href = './thanks.html'
+	} catch (e) {
+		if (e.response) {
+			console.error(e)
+		} else {
+			// const message = JSON.parse(target.response).detail
+			if (e === 'MemberLicenseKeyMismatch') {
+				product_key_error_field.textContent = 'This product key is invalid';
+				product_key_error_field.style.visibility = 'visible';
+			} else if (e === 'NoSuchMemberEmail') {
+				email_error_filed.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
+				email_error_filed.style.visibility = 'visible';
+			} else if (e === 'CustomerLicenseExpired') {
+				product_key_error_field.textContent = 'This email doesn’t exist. Please click “Get Started for Free”';
+				product_key_error_field.style.visibility = 'visible';
+			}
+		}
+
 	}
 })
 
