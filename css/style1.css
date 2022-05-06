@@ -140,7 +140,7 @@ a{text-decoration: none;}
   gap:8px;
 }
 .get_button{background: #6C79F9;padding:1.2rem 2rem;color:#fff;font-weight:700;
-border:none;border-radius: 30px;}
+border:none;border-radius: 30px;width: 180px}
 .get_button:hover{background:#95A0FF;cursor:pointer;}
 .youtube_button{border:1px solid #6C79F9;color:#6C79F9;border-radius:30px;padding:1.2rem 1.6rem;
 background: #fff;display: flex;align-items: center;gap:0.8rem;text-decoration: none;font-weight: 700;}
