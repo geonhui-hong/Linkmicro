@@ -230,7 +230,7 @@ submit_button.addEventListener('click', async () => {
 			arch = 'x86_64';
 		}
 
-		let version = await getLatestVersion(obj.email, obj.product_key)
+		let version = await getLatestVersion()
 
 		const headers = {
 			'Content-Type': 'application/json',
@@ -288,7 +288,7 @@ submit_button.addEventListener('click', async () => {
 	}
 })
 
-function getLatestVersion(email, productkey) {
+function getLatestVersion() {
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
 		const method = 'POST';
@@ -319,10 +319,7 @@ function getLatestVersion(email, productkey) {
 			});
 			xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
 
-			xhr.send(JSON.stringify({
-				member_email: email,
-				member_license_key: productkey
-			}));
+			xhr.send();
 		} catch (e) {
 			reject(e);
 		}

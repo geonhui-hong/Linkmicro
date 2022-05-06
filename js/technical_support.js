@@ -24,13 +24,20 @@ console.log("===================================")
 
 let os_value = null;
 if (os === 'windows') {
-	os_value = 'window';
+	os_value = 'windows';
 } else if (os === 'linux') {
 	os_value = os;
 } else if (os === 'mac' && arch === 'x86_64') {
 	os_value = 'apple_intel';
 } else if (os === 'mac' && arch === 'arm64') {
 	os_value = 'apple_silicon';
+}
+
+if (os === 'mac') {
+	const py_ver_opt1 = document.querySelector(`option[value="3.6"]`);
+	const py_ver_opt2 = document.querySelector(`option[value="3.7"]`);
+	if (py_ver_opt1) py_ver_opt1.disabled = true;
+	if (py_ver_opt2) py_ver_opt2.disabled = true;
 }
 
 const py_ver_opt = document.querySelector(`[value="${py_ver}"]`);
@@ -46,6 +53,26 @@ if (os_opt) {
 	os_opt.selected = true;
 }
 
+const os_select = document.querySelector('#os');
+const python_version_select = document.querySelector('#python_version');
+os_select.addEventListener('change', (evt) => {
+	console.log(evt);
+	const idx = evt.target.selectedIndex;
+	const txt = evt.target[idx].value;
+	const py_ver_opt1 = document.querySelector(`option[value="3.6"]`);
+	const py_ver_opt2 = document.querySelector(`option[value="3.7"]`);
+	if (txt.includes('apple')) {
+		if (py_ver_opt1) py_ver_opt1.disabled = true;
+		if (py_ver_opt2) py_ver_opt2.disabled = true;
+		const selected = python_version_select[python_version_select.selectedIndex].value
+		if (selected === '3.6' || selected === '3.7') {
+			python_version_select.selectedIndex = 3;
+		}
+	} else {
+		if (py_ver_opt1) py_ver_opt1.disabled = false;
+		if (py_ver_opt2) py_ver_opt2.disabled = false;
+	}
+})
 /**
  * 에러 필드 
  */
