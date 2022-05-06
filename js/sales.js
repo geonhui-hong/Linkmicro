@@ -96,7 +96,7 @@ form.addEventListener('keydown', (evt) => {
 				isEnableSubmit = false;
 				return;
 			} else {
-				description_error_field.style.visibility = 'hidden';
+				phone_number_error_field.style.visibility = 'hidden';
 			}
 		}
 
