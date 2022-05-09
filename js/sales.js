@@ -232,6 +232,9 @@ if (submit_button) {
 					private_policy: obj.agreement_private_policy === 'on' ? true : false,
 				});
 				console.log(result);
+				if (result && result.data && result.data.ok) {
+					window.location.href = './send_email_success.html'
+				}
 			} catch (e) {
 				if (e.response) {
 					console.error(e)

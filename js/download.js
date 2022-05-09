@@ -264,9 +264,6 @@ submit_button.addEventListener('click', async () => {
 		document.body.appendChild(temp);
 		temp.click();
 		document.body.removeChild(temp);
-
-		const modalBackground = document.querySelector('.jquery-modal')
-		modalBackground.dispatchEvent(new Event('click'))
 		window.location.href = './thanks.html'
 	} catch (e) {
 		if (e.response) {
@@ -292,7 +289,7 @@ function getLatestVersion() {
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
 		const method = 'POST';
-		const url = apiPrefix + '/api/v1/link/link_release_notice/latest';
+		const url = apiPrefix + '/api/v1/help/link_release_notice/latest';
 		try {
 			xhr.open(method, url);
 			xhr.onreadystatechange = (event) => {
@@ -319,7 +316,7 @@ function getLatestVersion() {
 			});
 			xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
 
-			xhr.send();
+			xhr.send(JSON.stringify({}));
 		} catch (e) {
 			reject(e);
 		}

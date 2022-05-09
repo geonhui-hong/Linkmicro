@@ -246,6 +246,9 @@ if (submit_button) {
 						'Content-Type': 'multipart/form-data'
 					}
 				});
+				if (result && result.data && result.data.ok) {
+					window.location.href = './send_email_success.html'
+				}
 				console.log(result);
 			} catch (e) {
 				if (e.response) {
