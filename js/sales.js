@@ -84,21 +84,6 @@ form.addEventListener('keydown', (evt) => {
 				email_error_field.style.visibility = 'hidden';
 			}
 		}
-		if (evt.target.id === 'phone_number') {
-			if (!/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(value)) {
-				phone_number_error_field.textContent = 'Invalid';
-				phone_number_error_field.style.visibility = 'visible'
-				isEnableSubmit = false;
-				return;
-			} else if (value.length === 0) {
-				phone_number_error_field.textContent = 'Required';
-				phone_number_error_field.style.visibility = 'visible'
-				isEnableSubmit = false;
-				return;
-			} else {
-				phone_number_error_field.style.visibility = 'hidden';
-			}
-		}
 
 		if (evt.target.id === 'company') {
 			if (value.length === 0) {
@@ -182,18 +167,6 @@ if (submit_button) {
 			if (formData.has('email') && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.get('email')) || formData.get('email').length < 5) {
 				email_error_field.textContent = 'Invalid';
 				email_error_field.style.visibility = 'visible';
-				isEnable = false;
-			}
-
-			if (formData.has('phone_number') && formData.get('phone_number').length === 0) {
-				phone_number_error_field.textContent = 'Required';
-				phone_number_error_field.style.visibility = 'visible'
-				isEnable = false;
-			}
-
-			if (formData.has('phone_number') && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(formData.get('phone_number'))) {
-				phone_number_error_field.textContent = 'Invalid';
-				phone_number_error_field.style.visibility = 'visible'
 				isEnable = false;
 			}
 
