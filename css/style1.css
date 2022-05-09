@@ -143,7 +143,7 @@ a{text-decoration: none;}
 border:none;border-radius: 30px;width: 180px}
 .get_button:hover{background:#95A0FF;cursor:pointer;}
 .youtube_button{border:1px solid #6C79F9;color:#6C79F9;border-radius:30px;padding:1.2rem 1.6rem;
-  min-width:14rem;justify-content: center;transition:all 0.3s;
+  min-width:14rem;justify-content: center;transition:all 0.3s;font-size:1.6rem;
 background:transparent;display: flex;align-items: center;gap:0.8rem;text-decoration: none;font-weight: 700;}
 .youtube_button:hover{background:#f1f3ff;}
 .youtube_button img{fill:#6C79F9}
@@ -285,7 +285,7 @@ p{
 }
 
 .section-tabs .swiper-tabs-nav .swiper-slide {
-  font-size:1.6rem;
+  font-size:1.8rem;
   text-align: center;
   padding-bottom: 10px;
   background: #fff;
@@ -383,7 +383,7 @@ p{
 .feature_text{display:flex;flex-direction:column;gap:2rem;
   justify-content:center;max-width:40%;}
 .feature_title{font-size:4rem;font-weight: 700;color:var( --color_black)}
-.feature_desc{font-size:2rem;line-height:1.5;max-width:600px; color:var( --color_black_desc);}
+.feature_desc{font-size:1.8rem;line-height:1.5;max-width:600px; color:var( --color_black_desc);}
 .feature_container > .wrap{padding:8rem 0;}
 .support_container_p{width: 100vw;display: flex;align-items: center;}
 .support_container{
@@ -636,7 +636,7 @@ p{
     padding:0;
   }
   .navbar_container .get_button{margin-top:4rem;}
-  .button_container{margin-top:0.8rem;height:4rem;}
+  .button_container{margin-top:0.8rem;height:4rem;width: 100%;}
   .youtube_button{}
   .visual_container{
     flex-direction: column;
@@ -667,7 +667,7 @@ p{
   }
   .title_section{margin-top:0vh;width:100%;max-width:100%;gap:2rem}
   .main_title{width:100%;max-width:100%;font-size:8vw;}
-  .main_text{width:100%;max-width: 100%;font-size:4vw;}
+  .main_text{width:100%;max-width: 100%;font-size:1.6rem;}
   .visual_section{width:90%;margin-top:0;}
   .jupyter > .container > .wrap img{width:50%;}
   .jupyter > .container > .wrap p{font-size:2.2rem;}
@@ -683,7 +683,7 @@ p{
   .feature_title,.feature_desc{width:100%;padding:1rem;line-height:1.5;box-sizing: border-box;
   font-size:2.8rem;}
   .feature_img{margin:4vh auto;}
-  .feature_desc{font-size:1.4rem;}
+  .feature_desc{font-size:1.6rem;}
   .feature_p >div + div{margin-top:4vh}
   .partner{width:100%;padding:4rem 2rem;box-sizing: border-box;}
   .partner_logo{margin-top:4rem;;}
