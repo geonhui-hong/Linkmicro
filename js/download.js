@@ -24,9 +24,25 @@ if (download_option_form) {
 	})
 }
 
-const productRadio = document.querySelector('[name="product_type"]');
+const productRadio = document.querySelectorAll('input[name="product_type"]');
 const operationRadios = document.querySelectorAll('[name="operation_system"]')
 const versionRadios = document.querySelectorAll('[name="python_version"]');
+Array.from(productRadio).forEach((el) => {
+	el.addEventListener('change', () => {
+		const selected = document.querySelector('input[name="product_type"]:checked').value;
+		const radio1 = document.querySelector('input[name="python_version"][value="3.6"]');
+		if (selected === 'desktop') {
+			const selected2 = document.querySelector('input[name="python_version"]:checked').value;
+			if (radio1) radio1.disabled = true;
+			if (selected2 === '3.6') {
+				document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
+				version_info_field.style.visibility = 'hidden'
+			}
+		} else {
+			if (radio1) radio1.disabled = false;
+		}
+	})
+})
 Array.from(operationRadios).forEach((el) => {
 	el.addEventListener('change', (event) => {
 		const selected = document.querySelector('input[name="operation_system"]:checked').value;
