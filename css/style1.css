@@ -143,7 +143,9 @@ a{text-decoration: none;}
 border:none;border-radius: 30px;width: 180px}
 .get_button:hover{background:#95A0FF;cursor:pointer;}
 .youtube_button{border:1px solid #6C79F9;color:#6C79F9;border-radius:30px;padding:1.2rem 1.6rem;
-background: #fff;display: flex;align-items: center;gap:0.8rem;text-decoration: none;font-weight: 700;}
+  min-width:14rem;justify-content: center;transition:all 0.3s;
+background:transparent;display: flex;align-items: center;gap:0.8rem;text-decoration: none;font-weight: 700;}
+.youtube_button:hover{background:#f1f3ff;}
 .youtube_button img{fill:#6C79F9}
 .language{display: flex;align-items: center;}
 .language span{display:block;width:1px;height:10px;background:#464555;}
@@ -186,8 +188,7 @@ p{
 }
 .title_section{display:flex;flex-direction:column;max-width:50%;gap:30px;margin-top:-10vh;}
 .main_title{font-size:4.8rem;line-height: 1.4;font-weight:700;color:#464555;}
-.main_text{line-height: 1.4;color:rgba(70, 69, 85, 0.6);font-weight: 400;}
-
+.main_text{line-height: 1.4;color:rgba(70, 69, 85, 0.6);font-weight: 400;font-size:1.8rem;}
 .visual_section{width:38%;}
 .visual_section img{width: 100%;}
 .jupyter{

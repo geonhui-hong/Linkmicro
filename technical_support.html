@@ -118,14 +118,15 @@
 							<div class="invalid_text" id="description_error_field">Email is invalid</div>
 						</div>
 						<div class="add_file_button_container">
+							<div class="input_title">Attachments</div>
 							<!-- 클릭하면 file browser 오픈 -->
 							<div id="drop_zone"
-								style="cursor: pointer; display: flex; justify-content: center; text-align: center; border: 1px solid black; min-height: 100px; line-height: 100px;"
 								ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" onclick="dragAreaClickHandler(event)">
+								<img src="images/upload_icon.svg" alt="">
 								For
 								attachments over
 								20MB use upload service​</div>
-							<div id="file_list" style="display: flex; gap: 20px; width: 100%; flex-wrap: wrap;"
+							<div id="file_list" style="display: flex; width: 100%; flex-wrap: wrap;"
 								onclick="clickHandler(event)"></div>
 						</div>
 					</div>
