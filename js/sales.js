@@ -121,8 +121,7 @@ form.addEventListener('keydown', (evt) => {
 if (submit_button) {
 	submit_button.addEventListener('click', async () => {
 		let isEnable = true;
-		// || grecaptcha.getResponse().length === 0
-		if (!form || !isEnableSubmit) return;
+		if (!form || !isEnableSubmit || grecaptcha.getResponse().length === 0) return;
 		try {
 			fname_error_field.style.visibility = 'hidden';
 			lname_error_field.style.visibility = 'hidden';
