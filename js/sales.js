@@ -188,6 +188,8 @@ if (submit_button) {
 		} catch (e) {
 			console.log(e.message)
 			isEnable = false;
+			grecaptcha.reset();
+
 		} finally {
 			if (!isEnable) return;
 			try {
@@ -206,8 +208,15 @@ if (submit_button) {
 				console.log(result);
 				if (result && result.data && result.data.ok) {
 					window.location.href = './send_email_success.html'
+				} else {
+					grecaptcha.reset();
+					submit_button.style.backgroundColor = '#e0e0e0';
+					isEnableSubmit = false;
 				}
 			} catch (e) {
+				grecaptcha.reset();
+				submit_button.style.backgroundColor = '#e0e0e0';
+				isEnableSubmit = false;
 				if (e.response) {
 					console.error(e)
 				} else {

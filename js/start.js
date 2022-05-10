@@ -192,6 +192,9 @@ if (submit_button) {
 								if (response.err.code === 'CustomerDuplicated' || response.err.code === 'MemberDuplicated') {
 									email_error_field.textContent = 'this email already exists'
 									email_error_field.style.visibility = 'visible';
+									grecaptcha.reset();
+									submit_button.style.backgroundColor = '#e0e0e0';
+									isEnableSubmit = false;
 								}
 							}
 						}
@@ -199,6 +202,9 @@ if (submit_button) {
 				}
 				xhr.addEventListener('error', (event) => {
 					console.log(event);
+					grecaptcha.reset();
+					submit_button.style.backgroundColor = '#e0e0e0';
+					isEnableSubmit = false;
 				});
 				xhr.setRequestHeader('Content-Type', 'application/json'); // 컨텐츠타입을 json으로
 
@@ -216,7 +222,9 @@ if (submit_button) {
 					grecaptcha: grecaptcha.getResponse()
 				}));
 			} catch (e) {
-				console.log(e)
+				grecaptcha.reset();
+				submit_button.style.backgroundColor = '#e0e0e0';
+				isEnableSubmit = false;
 			}
 		}
 	})
@@ -238,7 +246,7 @@ if (privacy_policy_checkbox) {
 	})
 }
 let captchaChecked = false;
-const captchaCallback = () => {
+const captchaCallback = (evt) => {
 	captchaChecked = true;
 	if (privacy_policy_checkbox.checked) {
 		submit_button.style.backgroundColor = '#6C79F9';

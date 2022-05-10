@@ -18,12 +18,34 @@ if (url.includes('pqxzhparpcft-help-web-dev.link.makinarocks.ai') || url.include
 // const product_key_error_field = document.querySelector('#product_key_error_field');
 
 const download_option_form = document.querySelector('#download_option_form');
+const os_list = document.querySelector('.os_list');
 if (download_option_form) {
 	download_option_form.addEventListener('submit', (e) => {
 		e.preventDefault();
 	})
 }
-
+const createListItem = (text) => {
+	const li = document.createElement('li');
+	li.className = "dynamic-list-item"
+	const label = document.createElement('label');
+	const image = document.createElement('img');
+	image.src = "images/os3.svg";
+	label.append(image);
+	li.append(label);
+	const div = document.createElement('div');
+	div.className = 'download_list_radio_li'
+	const input = document.createElement('input');
+	input.type = "radio";
+	input.name = "operation_system";
+	input.id = text;
+	input.value = text;
+	const inputLabel = document.createElement('label')
+	inputLabel.textContent = text;
+	div.append(input);
+	div.append(inputLabel);
+	li.append(div);
+	return li;
+}
 const productRadio = document.querySelectorAll('input[name="product_type"]');
 const operationRadios = document.querySelectorAll('[name="operation_system"]')
 const versionRadios = document.querySelectorAll('[name="python_version"]');
@@ -31,6 +53,8 @@ Array.from(productRadio).forEach((el) => {
 	el.addEventListener('change', () => {
 		const selected = document.querySelector('input[name="product_type"]:checked').value;
 		const radio1 = document.querySelector('input[name="python_version"][value="3.6"]');
+		document.querySelectorAll('.dynamic-list-item').forEach((d) => d.remove())
+
 		if (selected === 'desktop') {
 			const selected2 = document.querySelector('input[name="python_version"]:checked').value;
 			if (radio1) radio1.disabled = true;
@@ -38,14 +62,21 @@ Array.from(productRadio).forEach((el) => {
 				document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
 				version_info_field.style.visibility = 'hidden'
 			}
+			// linux - pedora, ubuntu
+			os_list.append(createListItem('pedora'))
+			os_list.append(createListItem('ubuntu'))
 		} else {
 			if (radio1) radio1.disabled = false;
+			// linux
+			os_list.append(createListItem('linux'))
 		}
 	})
 })
 Array.from(operationRadios).forEach((el) => {
 	el.addEventListener('change', (event) => {
 		const selected = document.querySelector('input[name="operation_system"]:checked').value;
+		const selectedPtype = document.querySelector('input[name="python_version"]:checked').value;
+
 		if (selected === 'apple_silicon') {
 			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
 			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
@@ -56,10 +87,15 @@ Array.from(operationRadios).forEach((el) => {
 			os_info_field.textContent = '(macOS-Apple Silicon) Only Python 3.8 and 3.9 are supported.';
 			os_info_field.style.visibility = 'visible'
 		} else {
-			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
-			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
-			if (radio1) radio1.disabled = false;
-			if (radio2) radio2.disabled = false;
+			if (!selectedPtype === 'desktop') {
+				const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
+				const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
+				if (radio1) radio1.disabled = false;
+				if (radio2) radio2.disabled = false;
+			} else {
+				const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
+				if (radio2) radio2.disabled = false;
+			}
 			os_info_field.style.visibility = 'hidden'
 		}
 	})
@@ -249,39 +285,65 @@ submit_button.addEventListener('click', async () => {
 
 		let version = await getLatestVersion()
 
-		const headers = {
-			'Content-Type': 'application/json',
-			withCredentials: true,
-		};
-
-		const response = await axios.post(apiPrefix + '/api/v1/download/help/download', JSON.stringify({
-			product_type: document.querySelector('input[name="product_type"]:checked').value,
-			py_ver: document.querySelector('input[name="python_version"]:checked').value,
-			arch: arch,
-			os: os,
-			link_ver: version
-		}), {
-			headers,
-			responseEncoding: 'binary',
-			responseType: 'arraybuffer',
+		axios({
+			url: apiPrefix + '/api/v1/download/help/download2', //your url
+			method: 'GET',
+			responseType: 'blob', // important
+			params: {
+				product_type: document.querySelector('input[name="product_type"]:checked').value,
+				py_ver: document.querySelector('input[name="python_version"]:checked').value,
+				arch: arch,
+				os: os,
+				link_ver: version
+			}
+		}).then((response) => {
+			const url = window.URL.createObjectURL(new Blob([response.data]));
+			const link = document.createElement('a');
+			link.href = url;
+			// temp.setAttribute(
+			// 	'download',
+			// 	response.headers['content-disposition']
+			// 		.split('filename=')[1]
+			// 		.replaceAll('"', ''),
+			// );
+			link.setAttribute('download', 'test.whl'); //or any other extension
+			document.body.appendChild(link);
+			link.click();
 		});
 
-		const temp = document.createElement('a');
-		const blob = new Blob([response.data], {
-			type: response.headers['content-type'],
-		});
-		temp.setAttribute('href', URL.createObjectURL(blob));
+		// const headers = {
+		// 	'Content-Type': 'application/json',
+		// 	withCredentials: true,
+		// };
 
-		temp.setAttribute(
-			'download',
-			response.headers['content-disposition']
-				.split('filename=')[1]
-				.replaceAll('"', ''),
-		);
-		document.body.appendChild(temp);
-		temp.click();
-		document.body.removeChild(temp);
-		window.location.href = './thanks.html'
+		// const response = await axios.post(apiPrefix + '/api/v1/download/help/download', JSON.stringify({
+		// 	product_type: document.querySelector('input[name="product_type"]:checked').value,
+		// 	py_ver: document.querySelector('input[name="python_version"]:checked').value,
+		// 	arch: arch,
+		// 	os: os,
+		// 	link_ver: version
+		// }), {
+		// 	headers,
+		// 	responseEncoding: 'binary',
+		// 	responseType: 'arraybuffer',
+		// });
+
+		// const temp = document.createElement('a');
+		// const blob = new Blob([response.data], {
+		// 	type: response.headers['content-type'],
+		// });
+		// temp.setAttribute('href', URL.createObjectURL(blob));
+
+		// temp.setAttribute(
+		// 	'download',
+		// 	response.headers['content-disposition']
+		// 		.split('filename=')[1]
+		// 		.replaceAll('"', ''),
+		// );
+		// document.body.appendChild(temp);
+		// temp.click();
+		// document.body.removeChild(temp);
+		// window.location.href = './thanks.html'
 	} catch (e) {
 		if (e.response) {
 			console.error(e)

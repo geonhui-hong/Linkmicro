@@ -248,9 +248,16 @@ if (submit_button) {
 				});
 				if (result && result.data && result.data.ok) {
 					window.location.href = './send_email_success.html'
+				} else {
+					grecaptcha.reset();
+					submit_button.style.backgroundColor = '#e0e0e0';
+					isEnableSubmit = false;
 				}
 				console.log(result);
 			} catch (e) {
+				grecaptcha.reset();
+				submit_button.style.backgroundColor = '#e0e0e0';
+				isEnableSubmit = false;
 				if (e.response) {
 					console.error(e)
 				} else {
