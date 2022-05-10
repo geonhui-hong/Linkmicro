@@ -648,7 +648,7 @@ p{
   .visual_section{margin-top:0;width:50%;}
   .main_title{font-size:4vw;}
   #home{margin-top:7rem;
-    height:100vh}
+    height: calc(var(100vh, 1vh) * 100);}
   .section-tabs{width:100vw;}  
   .swiper-container{width: 100vw;}
   .section-tabs .swiper-tabs-nav .swiper-slide
