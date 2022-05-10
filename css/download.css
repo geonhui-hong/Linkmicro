@@ -26,7 +26,7 @@
   border:1px solid #e0e0e0;
 	justify-content: space-around;
 }
-.download_list_radio_li{display: flex;align-items: center;gap:0.8rem;}
+.download_list_radio_li{display: flex;align-items: center;gap:0rem;}
 .operation_list > li,.python_version.download_operation li{padding:0.8rem 2rem;}
 .download_list > li.active,
 .download_operation .os_list li{
@@ -35,8 +35,8 @@
 }
 .os_list{
   display: flex;
-  max-width: 80rem;
-  gap:4rem;
+  width: 90rem;
+  gap:2rem;
   font-size:1.4rem;
   padding:2rem 4rem;
   background: rgba(178, 177, 199, 0.05);
@@ -48,8 +48,9 @@
   justify-content: center;
   align-items: center;
   gap:2rem;
+  flex:1;
 }
-.download_list_radio_li label{display: flex;gap:0.4rem;align-items: center;padding: 1rem}
+.download_list_radio_li label{display: flex;gap:0.4rem;align-items: center}
 .intel{display:inline-blocks;background-color: #EAFAFF;color:#18C7FE;font-size:1.3rem;padding:0.4rem 0.8rem 0.6rem;border-radius:30px;;}
 .apple_silicon{display:inline-block;background-color:#FFF1E0;color:#FF8A00;font-size:1.3rem;padding:0.4rem 0.8rem 0.6rem;border-radius: 30px;}
 .python_version > ul{max-width:80rem;margin:0 auto;margin-top:4rem;display:flex;

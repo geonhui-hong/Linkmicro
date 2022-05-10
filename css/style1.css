@@ -424,7 +424,6 @@ p{
   font-weight: 400;
 }
 .os_list li img{height:3rem}
-.os_list li > div{display: flex;gap:0.8rem;align-items: center;}
 .run_on_list{justify-content: space-between !important;gap:20px;}
 .run_on_list li{width:33.3%;height:140px;border-radius:12px;
   background-color:rgba(255,255,255,0.5);box-shadow:5px 5px 10px rgba(0,0,0,0.02);}

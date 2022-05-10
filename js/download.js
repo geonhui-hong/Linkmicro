@@ -63,8 +63,8 @@ Array.from(productRadio).forEach((el) => {
 				version_info_field.style.visibility = 'hidden'
 			}
 			// linux - pedora, ubuntu
-			os_list.append(createListItem('pedora'))
-			os_list.append(createListItem('ubuntu'))
+			os_list.append(createListItem('DEB'))
+			os_list.append(createListItem('RPM'))
 		} else {
 			if (radio1) radio1.disabled = false;
 			// linux
