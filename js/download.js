@@ -61,6 +61,8 @@ const createListItem = (text) => {
 	div.append(input);
 	div.append(inputLabel);
 	li.append(div);
+	li.addEventListener('change', operationRadioEventHandler)
+
 	return li;
 }
 const productRadio = document.querySelectorAll('input[name="product_type"]');
@@ -95,34 +97,36 @@ Array.from(productRadio).forEach((el) => {
 	})
 })
 Array.from(operationRadios).forEach((el) => {
-	el.addEventListener('change', (event) => {
-		const selected = document.querySelector('input[name="operation_system"]:checked').value;
-		const selectedPtype = document.querySelector('input[name="python_version"]:checked').value;
+	el.addEventListener('change', operationRadioEventHandler)
+})
+function operationRadioEventHandler() {
+	const selected = document.querySelector('input[name="operation_system"]:checked').value;
+	const selectedPtype = document.querySelector('input[name="python_version"]:checked').value;
 
-		if (selected === 'apple_silicon') {
+	if (selected === 'apple_silicon') {
+		const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
+		const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
+		if (radio1) radio1.disabled = true;
+		if (radio2) radio2.disabled = true;
+		document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
+		version_info_field.style.visibility = 'hidden'
+		os_info_field.textContent = '(macOS-Apple Silicon) Only Python 3.8 and 3.9 are supported.';
+		os_info_field.style.visibility = 'visible'
+	} else {
+		if (!selectedPtype === 'desktop') {
 			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
 			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
-			if (radio1) radio1.disabled = true;
-			if (radio2) radio2.disabled = true;
-			document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
-			version_info_field.style.visibility = 'hidden'
-			os_info_field.textContent = '(macOS-Apple Silicon) Only Python 3.8 and 3.9 are supported.';
-			os_info_field.style.visibility = 'visible'
+			if (radio1) radio1.disabled = false;
+			if (radio2) radio2.disabled = false;
 		} else {
-			if (!selectedPtype === 'desktop') {
-				const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
-				const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
-				if (radio1) radio1.disabled = false;
-				if (radio2) radio2.disabled = false;
-			} else {
-				const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
-				if (radio2) radio2.disabled = false;
-			}
-			os_info_field.style.visibility = 'hidden'
+			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
+			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
+			if (radio1) radio2.disabled = false;
+			if (radio2) radio1.disabled = true;
 		}
-	})
-})
-
+		os_info_field.style.visibility = 'hidden'
+	}
+}
 const os_info_field = document.querySelector('#os_info_field');
 const version_info_field = document.querySelector('#version_info_field');
 Array.from(versionRadios).forEach((el) => {
