@@ -29,7 +29,12 @@ const createListItem = (text) => {
 	li.className = "dynamic-list-item"
 	const label = document.createElement('label');
 	const image = document.createElement('img');
-	image.src = "images/os3.svg";
+	if (text === 'DEB')
+		image.src = "images/deb.svg";
+	else if (text === 'linux')
+		image.src = "images/os3.svg";
+	else
+		image.src = "images/rpm.svg";
 	label.append(image);
 	li.append(label);
 	const div = document.createElement('div');
@@ -38,9 +43,21 @@ const createListItem = (text) => {
 	input.type = "radio";
 	input.name = "operation_system";
 	input.id = text;
-	input.value = text;
+	if (text === 'DEB')
+		input.value = 'linux.fedora';
+	else if (text === 'linux')
+		input.value = 'linux.debian';
+	else
+		input.value = 'linux';
+
 	const inputLabel = document.createElement('label')
-	inputLabel.textContent = text;
+	if (text === 'DEB')
+		inputLabel.textContent = 'Linux(.deb)';
+	else if (text === 'RPM')
+		inputLabel.textContent = 'Linux(.rpm)';
+	else
+		inputLabel.textContent = 'Linux';
+
 	div.append(input);
 	div.append(inputLabel);
 	li.append(div);
@@ -284,32 +301,47 @@ submit_button.addEventListener('click', async () => {
 		}
 
 		let version = await getLatestVersion()
-
-		axios({
-			url: apiPrefix + '/api/v1/download/help/download2', //your url
-			method: 'GET',
-			responseType: 'blob', // important
-			params: {
-				product_type: document.querySelector('input[name="product_type"]:checked').value,
-				py_ver: document.querySelector('input[name="python_version"]:checked').value,
-				arch: arch,
-				os: os,
-				link_ver: version
-			}
-		}).then((response) => {
-			const url = window.URL.createObjectURL(new Blob([response.data]));
-			const link = document.createElement('a');
-			link.href = url;
-			// temp.setAttribute(
-			// 	'download',
-			// 	response.headers['content-disposition']
-			// 		.split('filename=')[1]
-			// 		.replaceAll('"', ''),
-			// );
-			link.setAttribute('download', 'test.whl'); //or any other extension
-			document.body.appendChild(link);
-			link.click();
-		});
+		/**
+		 http://dev.homepage.api.admin.link.makina.rocksdev.homepage.api.admin.link.makina.rocks/b2gfa0infqfv9bkvdkwi7zm3n/api/v1/download/help/download2
+		 ?product_type=desktop&py_ver=3.8&arch=x86_64&os=windows&link_ver=0.7.0
+		 */
+		let url2 = apiPrefix + '/api/v1/download/help/download2' + `
+			?product_type=${document.querySelector('input[name="product_type"]:checked').value}
+			&py_ver=${document.querySelector('input[name="python_version"]:checked').value}
+			&os=${os}
+			&link_ver=${version}
+			&arch=${arch}
+		`
+		const a = document.createElement('a');
+		a.setAttribute('download', true)
+		a.setAttribute('href', url2);
+		document.body.appendChild(a);
+		a.click();
+		// axios({
+		// 	url: apiPrefix + '/api/v1/download/help/download2', //your url
+		// 	method: 'GET',
+		// 	responseType: 'blob', // important
+		// 	params: {
+		// 		product_type: document.querySelector('input[name="product_type"]:checked').value,
+		// 		py_ver: document.querySelector('input[name="python_version"]:checked').value,
+		// 		arch: arch,
+		// 		os: os,
+		// 		link_ver: version
+		// 	}
+		// }).then((response) => {
+		// 	const url = window.URL.createObjectURL(new Blob([response.data]));
+		// 	const link = document.createElement('a');
+		// 	link.href = url;
+		// 	// temp.setAttribute(
+		// 	// 	'download',
+		// 	// 	response.headers['content-disposition']
+		// 	// 		.split('filename=')[1]
+		// 	// 		.replaceAll('"', ''),
+		// 	// );
+		// 	link.setAttribute('download', 'test.whl'); //or any other extension
+		// 	document.body.appendChild(link);
+		// 	link.click();
+		// });
 
 		// const headers = {
 		// 	'Content-Type': 'application/json',
@@ -326,6 +358,9 @@ submit_button.addEventListener('click', async () => {
 		// 	headers,
 		// 	responseEncoding: 'binary',
 		// 	responseType: 'arraybuffer',
+		// 	onDownloadProgress: (progresEvent) => {
+		// 		console.log(progresEvent)
+		// 	}
 		// });
 
 		// const temp = document.createElement('a');
