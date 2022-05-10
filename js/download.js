@@ -52,9 +52,9 @@ const createListItem = (text) => {
 
 	const inputLabel = document.createElement('label')
 	if (text === 'DEB')
-		inputLabel.textContent = 'Linux(.deb)';
+		inputLabel.textContent = 'Linux (.deb)';
 	else if (text === 'RPM')
-		inputLabel.textContent = 'Linux(.rpm)';
+		inputLabel.textContent = 'Linux (.rpm)';
 	else
 		inputLabel.textContent = 'Linux';
 
@@ -66,6 +66,8 @@ const createListItem = (text) => {
 const productRadio = document.querySelectorAll('input[name="product_type"]');
 const operationRadios = document.querySelectorAll('[name="operation_system"]')
 const versionRadios = document.querySelectorAll('[name="python_version"]');
+const product_type_info_field = document.querySelector('#product_type_info_field');
+
 Array.from(productRadio).forEach((el) => {
 	el.addEventListener('change', () => {
 		const selected = document.querySelector('input[name="product_type"]:checked').value;
@@ -74,6 +76,8 @@ Array.from(productRadio).forEach((el) => {
 
 		if (selected === 'desktop') {
 			const selected2 = document.querySelector('input[name="python_version"]:checked').value;
+			product_type_info_field.textContent = '(Desktop Application) Python 3.6 is not supported.';
+			product_type_info_field.style.visibility = 'visible'
 			if (radio1) radio1.disabled = true;
 			if (selected2 === '3.6') {
 				document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
@@ -83,6 +87,7 @@ Array.from(productRadio).forEach((el) => {
 			os_list.append(createListItem('DEB'))
 			os_list.append(createListItem('RPM'))
 		} else {
+			product_type_info_field.style.visibility = 'hidden'
 			if (radio1) radio1.disabled = false;
 			// linux
 			os_list.append(createListItem('linux'))
@@ -316,6 +321,9 @@ submit_button.addEventListener('click', async () => {
 		a.setAttribute('download', true)
 		a.setAttribute('href', url2);
 		document.body.appendChild(a);
+		a.addEventListener('load', () => {
+			console.log("흠")
+		})
 		a.click();
 		// axios({
 		// 	url: apiPrefix + '/api/v1/download/help/download2', //your url
@@ -378,7 +386,9 @@ submit_button.addEventListener('click', async () => {
 		// document.body.appendChild(temp);
 		// temp.click();
 		// document.body.removeChild(temp);
-		// window.location.href = './thanks.html'
+		setTimeout(() => {
+			window.location.href = './thanks.html'
+		}, 1200)
 	} catch (e) {
 		if (e.response) {
 			console.error(e)
