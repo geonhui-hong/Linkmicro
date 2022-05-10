@@ -24,20 +24,22 @@ width:100%;height:100%;padding:3.2em;box-sizing: border-box;}
 .read_more{display: flex;font-size:1.4rem;justify-content:flex-end;
     width:100%;font-weight: 700;}
 .read_more button{background: none;border:none;color:#6C79F9;}
-.support_page_container{padding:10rem 0;width:128rem;margin:0 auto;}
-.support_page_wrap{display:flex;justify-content:center;gap:10rem}
-.support_page_card{display: flex;flex-direction: column;gap:2rem;width:20%;}
+.support_page_container{padding:8rem 0;display: flex;justify-content: center;}
+.support_page_wrap{display:flex;justify-content:center;gap:10rem;width:114rem;}
+.support_page_card{display: flex;flex-direction: column;gap:2rem;width:30rem;}
 .support_page_card_text{font-size:1.6rem;font-weight: 400;color:#464555;
-    height:7rem;opacity: 0.6;text-align:left;line-height:1.5}
+    height:38%;opacity: 0.6;text-align:left;line-height:1.5}
+    .support_button_div{width: 100%;}
 .support_page_card_img{height:20rem;display:flex;align-items: center;}
-.support_page_card_img img{width:80%;margin:0 auto;}
+.support_page_card_img img{width:80%;margin:0 auto;min-width:20rem;}
 .support_page_card_button,.pricing_card_button{border: 1px solid #464555;
     color:#464555;
     box-sizing: border-box;
     border-radius: 30px;
     padding:1.2rem;font-size:1.6rem;transition: all 0.5s;
+    width: 100%;
     background: transparent;
-width: 25rem;text-align: center;}
+max-width:25rem;text-align: center;}
 .support_page_card_button:hover,.pricing_card_button:hover{background: #464555;color:#fff;}
 .pricing_container{display: flex;justify-content: center;padding:8rem 0}
 .pricing_wrap{display: flex;width:114rem;justify-content: center;gap:10rem;}
