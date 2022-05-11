@@ -72,25 +72,34 @@ const product_type_info_field = document.querySelector('#product_type_info_field
 
 Array.from(productRadio).forEach((el) => {
 	el.addEventListener('change', () => {
-		const selected = document.querySelector('input[name="product_type"]:checked').value;
-		const radio1 = document.querySelector('input[name="python_version"][value="3.6"]');
-		document.querySelectorAll('.dynamic-list-item').forEach((d) => d.remove())
+		const product_type_checked = document.querySelector('input[name="product_type"]:checked').value;
+		const python_version_checked = document.querySelector('input[name="python_version"]:checked').value;
+		const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
+		const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
+		const os_checked = document.querySelector('input[name="operation_system"]:checked').value;
 
-		if (selected === 'desktop') {
-			const selected2 = document.querySelector('input[name="python_version"]:checked').value;
+		document.querySelectorAll('.dynamic-list-item').forEach((d) => d.remove())
+		if (product_type_checked === 'desktop') {
 			product_type_info_field.textContent = '(Desktop Application) Python 3.6 is not supported.';
 			product_type_info_field.style.visibility = 'visible'
-			if (radio1) radio1.disabled = true;
-			if (selected2 === '3.6') {
+			version_info_field.style.visibility = 'hidden'
+			radio1.disabled = true;
+
+			if (python_version_checked === '3.6') {
 				document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
-				version_info_field.style.visibility = 'hidden'
 			}
-			// linux - pedora, ubuntu
+			// linux - fedora, ubuntu
 			os_list.append(createListItem('DEB'))
 			os_list.append(createListItem('RPM'))
 		} else {
+			if (os_checked !== 'apple_silicon') {
+				if (radio1) radio1.disabled = false;
+				if (radio2) radio2.disabled = false;
+				if (python_version_checked === '3.6' || python_version_checked === '3.7')
+					document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
+			}
+
 			product_type_info_field.style.visibility = 'hidden'
-			if (radio1) radio1.disabled = false;
 			// linux
 			os_list.append(createListItem('linux'))
 		}
@@ -100,30 +109,28 @@ Array.from(operationRadios).forEach((el) => {
 	el.addEventListener('change', operationRadioEventHandler)
 })
 function operationRadioEventHandler() {
-	const selected = document.querySelector('input[name="operation_system"]:checked').value;
-	const selectedPtype = document.querySelector('input[name="python_version"]:checked').value;
+	const os_checked = document.querySelector('input[name="operation_system"]:checked').value;
+	const product_type_checked = document.querySelector('input[name="product_type"]:checked').value;
+	const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
+	const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
+	const python_version_checked = document.querySelector('input[name="python_version"]:checked').value;
 
-	if (selected === 'apple_silicon') {
-		const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
-		const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
+	if (product_type_checked === 'desktop') {
+		if (radio1) radio1.disabled = true;
+		if (radio2) radio2.disabled = false;
+	} else {
+		if (radio1) radio1.disabled = false;
+		if (radio2) radio2.disabled = false;
+	}
+
+	if (os_checked === 'apple_silicon') {
 		if (radio1) radio1.disabled = true;
 		if (radio2) radio2.disabled = true;
-		document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
-		version_info_field.style.visibility = 'hidden'
+		if (python_version_checked === '3.6' || python_version_checked === '3.7')
+			document.querySelector('input[name="python_version"][value="3.8"]').checked = true;
 		os_info_field.textContent = '(macOS-Apple Silicon) Only Python 3.8 and 3.9 are supported.';
 		os_info_field.style.visibility = 'visible'
 	} else {
-		if (!selectedPtype === 'desktop') {
-			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
-			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
-			if (radio1) radio1.disabled = false;
-			if (radio2) radio2.disabled = false;
-		} else {
-			const radio1 = document.querySelector('input[name="python_version"][value="3.6"]')
-			const radio2 = document.querySelector('input[name="python_version"][value="3.7"]')
-			if (radio1) radio2.disabled = false;
-			if (radio2) radio1.disabled = true;
-		}
 		os_info_field.style.visibility = 'hidden'
 	}
 }
