@@ -399,7 +399,7 @@ submit_button.addEventListener('click', async () => {
 		// document.body.removeChild(temp);
 		setTimeout(() => {
 			window.location.href = './thanks.html'
-		}, 1200)
+		}, 3000)
 	} catch (e) {
 		if (e.response) {
 			console.error(e)
