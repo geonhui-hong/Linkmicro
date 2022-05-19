@@ -118,7 +118,7 @@
 }
 .email_container{width: 100%;}
 .name_input_contatier input,
-.email_container input,.job_title_container select,.organaization_container input
+.email_container input,.organaization_container input
 {border:none;border-bottom:1px solid #e0e0e0;
   box-sizing: border-box;
   padding:0.4rem 0;

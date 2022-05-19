@@ -30,7 +30,7 @@ const fname_error_field = document.querySelector('#fname_error_field');
 const lname_error_field = document.querySelector('#lname_error_field');
 const email_error_field = document.querySelector('#email_error_field');
 const organization_error_field = document.querySelector('#organization_error_field');
-
+const job_error_field = document.querySelector('#job_error_field');
 
 let formDebouncingID = 0;
 form.addEventListener('keydown', (evt) => {
@@ -117,7 +117,7 @@ if (submit_button) {
 			lname_error_field.style.visibility = 'hidden';
 			email_error_field.style.visibility = 'hidden';
 			organization_error_field.style.visibility = 'hidden';
-
+			job_error_field.style.visibility = 'hidden';
 			const formData = new FormData(form);
 			if (formData.has('fname') && formData.get('fname').length === 0) {
 				fname_error_field.textContent = 'Required';
@@ -166,6 +166,12 @@ if (submit_button) {
 				.test(formData.get('organization'))) {
 				organization_error_field.textContent = 'Invalid';
 				organization_error_field.style.visibility = 'visible';
+				isEnable = false;
+			}
+
+			if (formData.has('job') && formData.get('job').length === 0) {
+				job_error_field.textContent = 'Required'
+				job_error_field.style.visibility = 'visible';
 				isEnable = false;
 			}
 		} catch (e) {

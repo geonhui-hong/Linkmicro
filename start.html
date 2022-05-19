@@ -106,7 +106,8 @@
 						</div>
 						<div class="job_title_container">
 							<div class="input_title">Job title *</div>
-							<select name="job" id="job">
+							<select name="job" id="job" class="selectbox">
+								<option value=""> </option>
 								<option value="Data_Analyst">Data Analyst</option>
 								<option value="Data_Engineer">Data Engineer</option>
 								<option value="Data_Scientist">Data Scientist</option>
@@ -121,6 +122,7 @@
 								<option value="Student">Student</option>
 								<option value="other">Other</option>
 							</select>
+							<div class="invalid_text" id="job_error_field">Email is invalid</div>
 						</div>
 						<div class="organaization_container">
 							<div class="input_title">Organization *<span class="organaization_example">(e.g company, university or

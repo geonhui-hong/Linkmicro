@@ -80,7 +80,9 @@ const fname_error_field = document.querySelector('#fname_error_field');
 const lname_error_field = document.querySelector('#lname_error_field');
 const email_error_field = document.querySelector('#email_error_field');
 const description_error_field = document.querySelector('#description_error_field');
-
+const pyversion_error_field = document.querySelector('#pyversion_error_field');
+const os_error_field = document.querySelector('#os_error_field');
+const linkversion_error_field = document.querySelector('#linkversion_error_field')
 /**
  * 폼
  */
@@ -175,7 +177,9 @@ if (submit_button) {
 			lname_error_field.style.visibility = 'hidden';
 			email_error_field.style.visibility = 'hidden';
 			description_error_field.style.visibility = 'hidden';
-
+			pyversion_error_field.style.visibility = 'hidden';
+			linkversion_error_field.style.visibility = 'hidden';
+			os_error_field.style.visibility = 'hidden';
 			const formData = new FormData(form);
 			if (formData.has('fname') && formData.get('fname').length === 0) {
 				fname_error_field.textContent = 'Required';
@@ -217,6 +221,24 @@ if (submit_button) {
 			if (formData.has('description') && formData.get('description').length === 0) {
 				description_error_field.textContent = 'Required';
 				description_error_field.style.visibility = 'visible'
+				isEnable = false;
+			}
+
+			if (formData.has('python_version') && formData.get('python_version').length === 0) {
+				pyversion_error_field.textContent = 'Required';
+				pyversion_error_field.style.visibility = 'visible'
+				isEnable = false;
+			}
+
+			if (formData.has('os') && formData.get('os').length === 0) {
+				os_error_field.textContent = 'Required';
+				os_error_field.style.visibility = 'visible'
+				isEnable = false;
+			}
+
+			if (formData.has('link_version') && formData.get('link_version').length === 0) {
+				linkversion_error_field.textContent = 'Required';
+				linkversion_error_field.style.visibility = 'visible'
 				isEnable = false;
 			}
 		} catch (e) {
